@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\title{Repaso para la Interrogación 1 (I1)}
+\author{Tutorías -- Introducción al Cálculo}
+\date{Tutoría del jueves 3/9/2026 (última antes de la I1 del 8/9)}
+\begin{document}
+\maketitle
+
+Los siguientes ejercicios son un mini-ensayo tipo interrogación, calibrado según el nivel de
+exigencia de interrogaciones reales del curso (ver \texttt{Pautas/}): cubre división de polinomios
+y teorema del factor, axiomas de orden, valor absoluto, intervalos, e inecuaciones lineales,
+cuadráticas, racionales, con valor absoluto y con raíces. \textbf{No son ejercicios de cálculo
+directo únicamente: varios piden demostraciones rigurosas usando solo axiomas y teoremas vistos en
+clase}, tal como se exige en una interrogación real.
+
+\begin{enumerate}
+    \item \textbf{(División de polinomios)} Determine el valor de $k \in \mathbb{R}$ para que el
+    polinomio $P(x) = x^4 - 3x^3 + kx - 4$ sea divisible por $(x-2)$, y factorice completamente
+    $P(x)$ para ese valor de $k$.
+
+    \item \textbf{(Teorema del factor)} Encuentre todas las raíces racionales de
+    $P(x) = 2x^3 - 3x^2 - 11x + 6$ y factorice $P(x)$ completamente como producto de factores
+    lineales.
+
+    \item \textbf{(Axiomas de orden, demostración rigurosa)} Enuncie los axiomas de orden de
+    $\mathbb{R}$ (tricotomía, transitividad, compatibilidad con la suma, compatibilidad con el
+    producto por un número positivo). Usando \textbf{solo} estos axiomas (sin usar propiedades de
+    valor absoluto ni ejemplos numéricos), demuestre rigurosamente que si $a<b$ y $c<0$, entonces
+    $bc < ac$.
+
+    \item \textbf{(Axiomas de orden, demostración rigurosa)} Demuestre, usando solo los axiomas de
+    orden, que para todo $a,b\in\mathbb{R}$ con $0<a<b$ se tiene $a^2<b^2$. Indique explícitamente
+    qué axioma utiliza en cada paso.
+
+    \item \textbf{(Valor absoluto)} Demuestre, a partir de la Definición 2.7 (sin usar la
+    desigualdad triangular como si ya estuviera demostrada), que $|x\cdot y| = |x|\cdot|y|$ para
+    todo $x,y\in\mathbb{R}$.
+
+    \item \textbf{(Suma de valores absolutos, por casos)} Resuelva la inecuación
+    $$|x-2| + |x+3| < 7,$$
+    separando en los casos $x<-3$, $-3\le x<2$ y $x\ge 2$, y exprese el conjunto solución como
+    unión de intervalos (imite el formato de solución por casos visto en clase para este tipo de
+    inecuaciones).
+
+    \item \textbf{(Inecuación racional con varios factores)} Encuentre el conjunto solución,
+    escrito como unión de intervalos, de
+    $$\frac{1}{x-1} - \frac{1}{x+3} \ge \frac{1}{2}.$$
+    (Indicación: lleve todo a un solo lado, sume las fracciones sobre un denominador común, y
+    arme una tabla de signos considerando \emph{todos} los puntos críticos, incluyendo dónde la
+    expresión no está definida.)
+
+    \item \textbf{(Inecuación con raíz)} Resuelva $\sqrt{x+2} \le x$, determinando primero el
+    dominio de la inecuación y justificando por qué es válido elevar al cuadrado en el paso que
+    corresponda.
+
+    \item \textbf{(Intervalos)} Sean $A = [-3,4[$ y $B = \,]0,6]$. Determine $A \cap B$ y
+    $A \cup B$, expresando el resultado como intervalo(s).
+
+    \item \textbf{(Inecuación cuadrática)} Determine para qué valores de $k \in \mathbb{R}$ se
+    cumple que $\forall x \in \mathbb{R}\,(x^2 + kx + 9 > 0)$, justificando con el signo del
+    discriminante.
+
+    \item \textbf{(Mixto, nivel interrogación)} Resuelva
+    $$\frac{x^2-4x+3}{x} \le 2,$$
+    imponiendo primero todas las condiciones de dominio necesarias (recuerde que no puede
+    multiplicar por $x$ sin conocer su signo), y concluya el conjunto solución como intersección
+    de las condiciones impuestas.
+\end{enumerate}
+
+\end{document}

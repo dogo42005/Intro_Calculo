@@ -1,0 +1,165 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\newtheorem{definicion}{Definición}
+\newtheorem{teorema}{Teorema}
+\newtheorem{ejemplo}{Ejemplo}
+\newtheorem{observacion}{Observación}
+
+\title{Semana 9 -- Materia}
+\author{Tutorías -- Introducción al Cálculo}
+\date{5/10--9/10/2026}
+
+\begin{document}
+\maketitle
+
+\section{Álgebra y composición de funciones}
+
+Dadas dos funciones $F$ y $G$, la \textbf{composición} de $G$ con $F$, denotada $G \circ F$, es la
+función que se obtiene aplicando primero $F$ y luego $G$ al resultado.
+
+\begin{definicion}[Composición de funciones]
+Sean $F$ y $G$ funciones. La función $G$ \textbf{compuesta con} $F$ se define por
+$$G \circ F = \{(x,y) \in \mathsf{Dom}\,F \times \mathsf{Rec}\,G : y = G(F(x))\}.$$
+Es decir, para $x \in \mathsf{Dom}\,F$ con $F(x) \in \mathsf{Dom}\,G$ se tiene $G\circ F(x) = G(F(x))$.
+En particular,
+$$\mathsf{Dom}\,(G\circ F) = \{x \in \mathsf{Dom}\,F : F(x) \in \mathsf{Dom}\,G\}.$$
+\end{definicion}
+
+Para calcular una composición hay que hacer dos cosas: encontrar el dominio (los $x$ para los que
+tiene sentido evaluar primero $F$ y luego $G$) y encontrar la regla $G(F(x))$.
+
+\begin{ejemplo}
+Sean $F = \{(1,-1),(2,0),(3,0)\}$ y $G = \{(-1,20),(0,20)\}$. Como $\mathsf{Rec}\,F = \{-1,0\}
+\subseteq \mathsf{Dom}\,G$, toda la función $F$ se puede componer con $G$:
+$$\mathsf{Dom}\,(G\circ F) = \{1,2,3\}, \qquad G\circ F = \{(1,20),(2,20),(3,20)\}.$$
+\end{ejemplo}
+
+\begin{ejemplo}
+Sean $F(x) = x^2$ y $G(x) = \dfrac{1}{x}$, ambas funciones reales. Entonces
+$$\mathsf{Dom}\,(G\circ F) = \{x \in \mathbb{R} : F(x) \in \mathsf{Dom}\,G\} = \{x \in \mathbb{R} : x^2
+\neq 0\} = \mathbb{R}-\{0\},$$
+$$G\circ F(x) = G(x^2) = \frac{1}{x^2}.$$
+Si calculamos la composición en el otro orden obtenemos $\mathsf{Dom}\,(F\circ G) = \mathbb{R}-\{0\}$
+y $F\circ G(x) = \left(\dfrac{1}{x}\right)^2 = \dfrac{1}{x^2}$: en este caso particular ambas
+composiciones coinciden, pero \textbf{en general la composición de funciones no es conmutativa}
+($G\circ F \neq F \circ G$).
+\end{ejemplo}
+
+\begin{ejemplo}
+Sean $F(x) = \dfrac{1}{x}$ y $G(x) = x+1$. Entonces $\mathsf{Dom}\,(G\circ F) = \mathbb{R}-\{0\}$ y
+$$G\circ F(x) = G\left(\frac{1}{x}\right) = \frac{1}{x}+1 = \frac{1+x}{x}.$$
+\end{ejemplo}
+
+\begin{observacion}
+Si $F$ es función de $A$ en $B$ y $\mathsf{Id}_A$, $\mathsf{Id}_B$ son las funciones identidad de
+$A$ y de $B$ respectivamente, entonces $F \circ \mathsf{Id}_A = F$ e $\mathsf{Id}_B \circ F = F$: la
+identidad actúa como neutro de la composición.
+\end{observacion}
+
+\section{Función Inversa I: inyectividad y relación inversa}
+
+Queremos estudiar cuándo una función admite una función inversa, es decir, cuándo es posible
+``deshacer'' lo que hace $f$. Esto requiere que $f$ asigne a elementos distintos del dominio
+imágenes distintas.
+
+\begin{definicion}[Función inyectiva]
+Sea $f$ función. Decimos que $f$ es \textbf{inyectiva} (o \textbf{uno a uno}) si y solo si
+$$\forall x \in \mathsf{Dom}\,f\ \forall y \in \mathsf{Dom}\,f\ (x \neq y \rightarrow f(x) \neq f(y)),$$
+lo que equivale a
+$$\forall x \in \mathsf{Dom}\,f\ \forall y \in \mathsf{Dom}\,f\ (f(x) = f(y) \rightarrow x = y).$$
+Gráficamente, $f$ es inyectiva cuando toda recta horizontal corta su gráfico en a lo más un punto.
+\end{definicion}
+
+\begin{ejemplo}
+Sea $f(x) = \dfrac{x+1}{x-2}$, con $\mathsf{Dom}\,f = \mathbb{R}-\{2\}$. Si $f(x) = f(y)$ con
+$x,y \neq 2$, entonces $(x+1)(y-2) = (y+1)(x-2)$, es decir $xy - 2x + y - 2 = xy - 2y + x - 2$, de
+donde $3y = 3x$, o sea $x=y$. Luego $f$ es inyectiva.
+\end{ejemplo}
+
+Note que la función real $f(x)=x^2$ \textbf{no} es inyectiva, pues $f(1)=f(-1)=1$ con $1 \neq -1$.
+
+\begin{definicion}[Relación inversa]
+Sea $f$ función real. La \textbf{relación inversa} $f^{-1}$ de $f$ se define por
+$$f^{-1} = \{(y,x) \in \mathsf{Rec}\,f \times \mathsf{Dom}\,f : f(x) = y\}.$$
+\end{definicion}
+
+$f^{-1}$ siempre es una relación, pero no siempre es una función: será función exactamente cuando
+cada elemento del recorrido de $f$ tiene una única preimagen, es decir, cuando $f$ es inyectiva.
+
+\begin{teorema}
+$f$ es inyectiva si y solo si $f^{-1}$ es función.
+\end{teorema}
+
+\emph{Idea de la demostración.} Si $f$ es inyectiva y $(y,x),(y,x') \in f^{-1}$, entonces
+$f(x)=y=f(x')$, y como $f$ es inyectiva, $x=x'$; luego $f^{-1}$ es función. Recíprocamente, si
+$f^{-1}$ es función y $f(x)=f(x')=y$, entonces $(y,x),(y,x') \in f^{-1}$ y como $f^{-1}$ es función,
+$x=x'$; luego $f$ es inyectiva.
+
+\begin{observacion}
+Cuando $f^{-1}$ es función se tiene $\mathsf{Dom}\,f^{-1} = \mathsf{Rec}\,f$,
+$\mathsf{Rec}\,f^{-1} = \mathsf{Dom}\,f$, y para $x \in \mathsf{Dom}\,f$, $y \in \mathsf{Rec}\,f$:
+$$f(x) = y \iff f^{-1}(y) = x.$$
+\end{observacion}
+
+\begin{ejemplo}
+Retomando $f(x) = \dfrac{x+1}{x-2}$ (inyectiva, $\mathsf{Dom}\,f=\mathbb{R}-\{2\}$,
+$\mathsf{Rec}\,f=\mathbb{R}-\{1\}$): para $y \neq 1$,
+$$f^{-1}(y) = x \iff \frac{x+1}{x-2} = y \iff x+1 = y(x-2) \iff x(1-y) = -1-2y \iff x = \frac{2y+1}{y-1}.$$
+Luego $f^{-1}$ tiene dominio $\mathbb{R}-\{1\}$, recorrido $\mathbb{R}-\{2\}$ y
+$f^{-1}(y) = \dfrac{2y+1}{y-1}$.
+\end{ejemplo}
+
+\section{Biyecciones y composición de biyecciones}
+
+\begin{definicion}[Biyección]
+Sean $A$, $B$ conjuntos. $f$ es \textbf{biyección de $A$ sobre $B$} si y solo si $f$ es función
+inyectiva de $A$ en $B$ y $\mathsf{Rec}\,f = B$ (es decir, $f$ es inyectiva y sobreyectiva).
+\end{definicion}
+
+\begin{ejemplo}
+$f:\mathbb{R}\to\mathbb{R}$, $f(x)=2x$, es biyección de $\mathbb{R}$ sobre $\mathbb{R}$: es
+inyectiva ($2x=2y \Rightarrow x=y$) y sobre (dado $y\in\mathbb{R}$, $x=y/2$ cumple $f(x)=y$).
+\end{ejemplo}
+
+\begin{ejemplo}
+$f:\mathbb{N}\to\mathbb{N}$, $f(x)=3x$, es inyectiva pero \textbf{no} es sobre $\mathbb{N}$: por
+ejemplo $2 \notin \mathsf{Rec}\,f$, pues $2=3x$ obliga a $x=2/3 \notin \mathbb{N}$. Luego $f$ no es
+biyección de $\mathbb{N}$ sobre $\mathbb{N}$.
+\end{ejemplo}
+
+\begin{teorema}
+Si $f$ es inyectiva, entonces $f^{-1}$ también es inyectiva.
+\end{teorema}
+
+\begin{teorema}
+Si $f$ es biyección de $A$ sobre $B$, entonces $f^{-1}$ es biyección de $B$ sobre $A$.
+\end{teorema}
+
+\begin{teorema}
+Si $f$ es biyección de $A$ sobre $B$ y $g$ es biyección de $B$ sobre $C$, entonces $g\circ f$ es
+biyección de $A$ sobre $C$: la composición de biyecciones es biyección.
+\end{teorema}
+
+\section{Un problema que combina todo: funciones por tramos}
+
+\begin{ejemplo}[Aplicación]
+Sean
+$$f(x)=\begin{cases} x^2-1 & x>0 \\ 2x-1 & x\le 0\end{cases} \qquad
+g(x)=\begin{cases} x^2-1 & x>-1 \\ 2x-1 & x\le -1.\end{cases}$$
+Se puede demostrar, analizando casos según el tramo, que $f$ es biyección sobre $\mathbb{R}$
+(inyectiva tramo a tramo y comparando tramos distintos; sobreyectiva resolviendo $f(x)=y$ en cada
+tramo), mientras que $g$ no es inyectiva (por ejemplo $g(-\tfrac12)=g(\tfrac12)=-\tfrac34$) ni
+sobreyectiva (no existe $x$ con $g(x)=-2$). La inversa de $f$ resulta
+$$f^{-1}(y) = \begin{cases} \dfrac{y+1}{2} & y \le -1 \\[4pt] \sqrt{y+1} & y > -1,\end{cases}$$
+y componiendo, $g\circ f^{-1}(x) = x$ si $x \le -3$ o $x > -1$, y
+$g\circ f^{-1}(x) = \left(\dfrac{x+1}{2}\right)^2 - 1$ si $-3 < x \le -1$. Este ejemplo muestra cómo
+se combinan inyectividad, sobreyectividad, cálculo de la inversa y composición en un solo problema.
+\end{ejemplo}
+
+\end{document}

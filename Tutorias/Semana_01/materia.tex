@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\newtheorem{definicion}{Definición}[section]
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{proposicion}{Proposición}[section]
+\newtheorem{corolario}{Corolario}[section]
+\theoremstyle{remark}
+\newtheorem*{ejemplo}{Ejemplo}
+\newtheorem*{observacion}{Observación}
+
+\title{Semana 1 -- Materia}
+\author{Tutorías -- Introducción al Cálculo}
+\date{03/08--07/08/2026}
+
+\begin{document}
+\maketitle
+
+\section{Polinomios}
+
+En esta tutoría trabajamos con el concepto de polinomio, sus raíces, y el
+algoritmo que permite dividir un polinomio por otro. Toda la notación sigue
+la Sección 7.3 del libro.
+
+\subsection{Definición de polinomio}
+
+\begin{definicion}[Polinomio]
+Un \textbf{polinomio} en $x$ es una función $P$ definida para todo $x$ mediante
+una expresión de la forma
+$$P(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n, \qquad n \in \mathbb{N} \cup \{0\},$$
+donde los números $a_0, a_1, \dots, a_n$ son constantes llamadas \textbf{coeficientes}
+del polinomio. Si $a_n \neq 0$ y $n \neq 0$, decimos que $n$ es el \textbf{grado}
+de $P$. Si $a_n = 0$ y $n=0$ (es decir, si $P$ es el polinomio nulo) entonces $P$
+no tiene grado.
+\end{definicion}
+
+La suma, la resta y el producto de dos polinomios vuelven a ser polinomios: al
+sumar o restar, los coeficientes se suman o restan coeficiente a coeficiente
+(completando con ceros las potencias que falten en el polinomio de menor
+grado), y al multiplicar, el coeficiente de $x^k$ en el producto es
+$\sum_{i+j=k} a_i b_j$.
+
+\begin{ejemplo}
+\begin{itemize}
+\item $P(x) = -3x^4 + x^2 - 1$ es un polinomio de grado 4.
+\item $P(x) = 7$ es un polinomio de grado 0 (no tiene término en $x$).
+\item $P(x) = 0$ es un polinomio, pero no tiene grado.
+\item Si $P(x) = 2 - x + x^3$ y $Q(x) = 4 - x^3$, entonces
+$$P(x) + Q(x) = 6 - x, \qquad P(x) \cdot Q(x) = 8 - 4x + 4x^3 - 2x^3 + x^4 - x^6.$$
+\end{itemize}
+\end{ejemplo}
+
+\subsection{Raíces de un polinomio y su relación con la divisibilidad}
+
+\begin{definicion}[Raíz de un polinomio]
+Un número $\alpha$ es una \textbf{raíz} del polinomio $P$ si $P(\alpha) = 0$.
+\end{definicion}
+
+Hay una relación fundamental entre las raíces de un polinomio y la posibilidad
+de factorizarlo. Si $P$ tiene grado $n$ y escribimos cada potencia de $x$ como
+$x = \alpha + (x-\alpha)$, al desarrollar con el Teorema del Binomio podemos
+reescribir $P$ en potencias de $(x-\alpha)$:
+$$P(x) = b_n(x-\alpha)^n + b_{n-1}(x-\alpha)^{n-1} + \cdots + b_1(x-\alpha) + b_0.$$
+Evaluando en $x = \alpha$ se anulan todos los términos salvo $b_0$, de modo que
+$P(\alpha) = b_0$. Por lo tanto:
+$$\alpha \text{ es raíz de } P \iff b_0 = 0 \iff P(x) = (x-\alpha)\big(c_1 + c_2 x + \cdots + c_n x^{n-1}\big),$$
+es decir, $\alpha$ es raíz de $P$ si y solamente si $P$ es \textbf{divisible} por
+$(x-\alpha)$, esto es, expresable como $P(x) = (x-\alpha)Q(x)$ con $Q$ un
+polinomio de grado menor que $P$.
+
+\begin{ejemplo}
+Sea $P(x) = x^3 - 4x^2 + x + 6$. Notamos que $P(-1) = -1 - 4 - 1 + 6 = 0$, así
+que $-1$ es raíz de $P$. Por la relación anterior, $P$ debe ser divisible por
+$(x-(-1)) = (x+1)$; más adelante (Teorema del Resto y algoritmo de división)
+veremos cómo encontrar explícitamente el cuociente.
+\end{ejemplo}
+
+\subsection{Teorema del Resto}
+
+Cuando dividimos $P(x)$ por un binomio de la forma $(x - \alpha)$, la expresión
+$$P(x) = b_n(x-\alpha)^n + \cdots + b_1(x-\alpha) + b_0$$
+usada arriba nos dice exactamente cuál es el cuociente y el resto de esa
+división: dividiendo ambos lados por $(x-\alpha)$,
+$$\frac{P(x)}{x-\alpha} = \underbrace{c_n x^{n-1} + c_{n-1}x^{n-2} + \cdots + c_1}_{\text{cuociente}} + \frac{b_0}{x-\alpha},$$
+donde $b_0$ es el \textbf{resto}. Como vimos, $b_0 = P(\alpha)$, lo que da el
+siguiente resultado.
+
+\begin{teorema}[Teorema del Resto]
+Para cualquier número $\alpha$ y cualquier polinomio $P$, el resto de dividir
+$P(x)$ por $(x-\alpha)$ es $P(\alpha)$. Es decir, si
+$$P(x) = Q(x)(x-\alpha) + R,$$
+con $R$ de grado menor que $1$ (es decir, $R$ es una constante), entonces
+$P(\alpha) = R$.
+\end{teorema}
+
+Los coeficientes $c_n, c_{n-1}, \dots, c_1$ del cuociente y el resto $b_0$ se
+calculan igualando coeficientes homólogos en
+$$P(x) = (x-\alpha)(c_nx^{n-1} + \cdots + c_1) + b_0,$$
+lo que da el esquema de \textbf{coeficientes indeterminados}:
+$$c_n = a_n, \quad c_{n-1} = a_{n-1} + \alpha c_n, \quad \dots, \quad c_1 = a_1 + \alpha c_2, \quad b_0 = a_0 + \alpha c_1.$$
+
+\begin{ejemplo}
+Dividamos $P(x) = 3x^3 - 5x^2 + 2x - 8$ por $(x - 2)$ (es decir, $\alpha = 2$).
+Ordenando los coeficientes $a_3=3,\ a_2=-5,\ a_1=2,\ a_0=-8$, aplicamos el
+esquema:
+\begin{align*}
+c_3 &= a_3 = 3, \\
+c_2 &= a_2 + \alpha c_3 = -5 + 2\cdot 3 = 1, \\
+c_1 &= a_1 + \alpha c_2 = 2 + 2\cdot 1 = 4, \\
+b_0 &= a_0 + \alpha c_1 = -8 + 2\cdot 4 = 0.
+\end{align*}
+Luego el cuociente es $Q(x) = 3x^2 + x + 4$ y el resto es $0$. Por el Teorema
+del Resto, esto confirma que $P(2) = 0$, es decir, $2$ es raíz de $P$ (y, por
+la relación de la sección anterior, $P$ es divisible por $(x-2)$).
+\end{ejemplo}
+
+\begin{ejemplo}
+Dividamos ahora $P(x) = x^4 - 3x^2 + 5$ por $(x+3)$, es decir $\alpha = -3$.
+Los coeficientes son $a_4=1,\ a_3=0,\ a_2=-3,\ a_1=0,\ a_0=5$:
+\begin{align*}
+c_4 &= 1, \\
+c_3 &= 0 + (-3)(1) = -3, \\
+c_2 &= -3 + (-3)(-3) = 6, \\
+c_1 &= 0 + (-3)(6) = -18, \\
+b_0 &= 5 + (-3)(-18) = 59.
+\end{align*}
+Así, $Q(x) = x^3 - 3x^2 + 6x - 18$ y el resto es $59$. Como el resto no es
+cero, $-3$ no es raíz de $P$; de hecho el Teorema del Resto nos dice
+directamente que $P(-3) = 59$, sin necesidad de evaluar el polinomio
+original.
+\end{ejemplo}
+
+\subsection{Algoritmo general de división de polinomios}
+
+El caso anterior (dividir por un binomio de grado 1) es un caso particular de
+un resultado más general, válido para dividir por cualquier polinomio no
+nulo.
+
+\begin{teorema}\label{teo:division}
+Sean $P$ y $S$ dos polinomios, con $S$ distinto del polinomio $0$. Entonces
+existen dos únicos polinomios $Q$ y $R$ tales que
+\begin{enumerate}[label=(\Roman*)]
+\item $P(x) = Q(x)\cdot S(x) + R(x)$,
+\item el grado de $R$ es menor que el grado de $S$, o bien $R$ es el
+polinomio $0$.
+\end{enumerate}
+\end{teorema}
+
+La demostración (por inducción en el grado de $P$) es constructiva y da un
+algoritmo concreto: si el grado de $S$ es mayor que el de $P$, el cuociente es
+$0$ y el resto es el propio $P$. En caso contrario, se compara el término de
+mayor grado de $P$, digamos $a_n x^n$, con el de mayor grado de $S$, digamos
+$b_m x^m$, y se define
+$$P_1(x) = P(x) - \frac{a_n}{b_m}x^{n-m}S(x),$$
+que tiene grado estrictamente menor que $P$ (el término de grado $n$ se
+cancela). Se repite el proceso con $P_1$ en lugar de $P$, acumulando los
+factores $\frac{a_n}{b_m}x^{n-m}$ obtenidos en cada paso para formar $Q$, hasta
+obtener un resto de grado menor que el de $S$.
+
+\begin{ejemplo}
+Dividamos $P(x) = 3x^4 - 2x^3 + x - 5$ por $S(x) = x^2 - x + 2$.
+
+\textit{Paso 1.} El término de mayor grado de $P$ es $3x^4$ y el de $S$ es
+$x^2$; el factor que los relaciona es $3x^2$. Calculamos
+$$P_1(x) = P(x) - 3x^2 S(x) = (3x^4-2x^3+x-5) - (3x^4-3x^3+6x^2) = x^3 - 6x^2 + x - 5.$$
+
+\textit{Paso 2.} El término de mayor grado de $P_1$ es $x^3$; el factor es $x$:
+$$P_2(x) = P_1(x) - xS(x) = (x^3-6x^2+x-5) - (x^3-x^2+2x) = -5x^2 - x - 5.$$
+
+\textit{Paso 3.} El término de mayor grado de $P_2$ es $-5x^2$; el factor es
+$-5$:
+$$P_3(x) = P_2(x) - (-5)S(x) = (-5x^2-x-5) + (5x^2-5x+10) = -6x+5.$$
+
+Como el grado de $P_3$ (que es $1$) es menor que el grado de $S$ (que es
+$2$), el proceso termina. El cuociente es la suma de los factores obtenidos,
+$Q(x) = 3x^2 + x - 5$, y el resto es $R(x) = -6x + 5$. Podemos verificar que
+$$Q(x)S(x) + R(x) = (3x^2+x-5)(x^2-x+2) + (-6x+5) = 3x^4-2x^3+x-5 = P(x).$$
+
+Este mismo procedimiento se suele resumir en un esquema tipo "división
+larga":
+$$
+\begin{array}{r}
+3x^2+x-5 \\
+\hline
+x^2-x+2 \ \big) \ 3x^4-2x^3+\phantom{0}0x^2+x-5 \\
+-(3x^4-3x^3+6x^2)\phantom{+x-5}\\
+\hline
+x^3-6x^2+x-5\phantom{0}\\
+-(x^3-x^2+2x)\phantom{-5}\\
+\hline
+-5x^2-x-5\phantom{0}\\
+-(-5x^2+5x-10)\phantom{0}\\
+\hline
+-6x+5
+\end{array}
+$$
+\end{ejemplo}
+
+\end{document}

@@ -1,0 +1,154 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\title{Semana 7 -- Ejercicios}
+\author{Tutorías -- Introducción al Cálculo}
+\date{21/9--25/9/2026}
+
+\begin{document}
+\maketitle
+
+\section{Ejercicios de la semana}
+
+\begin{enumerate}[label=\arabic*.]
+
+\item Sea $f(x) = x^2 - 4$. Describa el gráfico de cada una de las siguientes
+funciones en términos de una transformación del gráfico de $f$, y dé su
+dominio y recorrido:
+\begin{enumerate}[label=(\alph*)]
+\item $g(x) = f(x) + 3$
+\item $h(x) = f(x-1)$
+\item $k(x) = -f(x)$
+\item $m(x) = 2f(x)$
+\end{enumerate}
+
+\textit{Solución:}
+\begin{enumerate}[label=(\alph*)]
+\item $g(x) = x^2-1$: traslación vertical $3$ hacia arriba. $\mathsf{Dom}\,g=\mathbb{R}$,
+$\mathsf{Rec}\,g=[-1,\infty[$.
+\item $h(x) = (x-1)^2-4$: traslación horizontal $1$ hacia la derecha. $\mathsf{Dom}\,h=\mathbb{R}$,
+$\mathsf{Rec}\,h=[-4,\infty[$ (igual que $f$, pues la traslación horizontal no cambia el
+recorrido).
+\item $k(x) = -x^2+4$: reflexión respecto al eje $X$. $\mathsf{Dom}\,k=\mathbb{R}$,
+$\mathsf{Rec}\,k=\,]-\infty,4]$.
+\item $m(x) = 2x^2-8$: dilatación vertical en factor $2$. $\mathsf{Dom}\,m=\mathbb{R}$,
+$\mathsf{Rec}\,m=[-8,\infty[$.
+\end{enumerate}
+
+\item Sea $f(x) = \sqrt{x}$. A partir del gráfico de $f$, describa el gráfico
+de $g(x) = f(x+4) - 2$. ¿Cuál es el dominio de $g$?
+
+\textit{Solución:} $g(x) = \sqrt{x+4}-2$ se obtiene trasladando el gráfico de $f$ en $4$ unidades
+hacia la izquierda y luego en $2$ unidades hacia abajo. Como se necesita $x+4\ge0$,
+$\mathsf{Dom}\,g = [-4,\infty[$.
+
+\item Sea $f(x) = |x|$. Grafique $f$ y luego $g(x) = f(x-3)+1$. Escriba $g(x)$
+sin usar la notación de valor absoluto compuesta (es decir, como función por
+tramos).
+
+\textit{Solución:} $g(x)=|x-3|+1$. Como $|x-3| = x-3$ si $x\ge3$ y $|x-3|=3-x$ si $x<3$, se
+tiene
+$$g(x) = \begin{cases} x-2 & \text{si } x\ge3 \\ 4-x & \text{si } x<3. \end{cases}$$
+
+\item Sean $f(x) = 2x+5$ y $g(x) = f(-x)$. Determine la expresión algebraica de
+$g$ y explique, en términos del gráfico de $f$, qué transformación produce $g$.
+
+\textit{Solución:} $g(x) = f(-x) = 2(-x)+5 = -2x+5$. El gráfico de $g$ es el de $f$ reflejado
+respecto al eje $Y$ (reflexión horizontal).
+
+\item Sea $f(x) = x^3$. Determine la expresión algebraica y describa la
+transformación correspondiente al gráfico de $f$ para:
+\begin{enumerate}[label=(\alph*)]
+\item $(3f)(x)$
+\item $f(2x)$
+\item $|f|(x)$
+\end{enumerate}
+
+\textit{Solución:}
+\begin{enumerate}[label=(\alph*)]
+\item $(3f)(x) = 3x^3$: dilatación vertical en factor $3$.
+\item $f(2x) = 8x^3$: compresión horizontal en factor $2$ (el ancho del gráfico se divide por
+$2$).
+\item $|f|(x) = |x^3| = |x|^3$: se refleja hacia arriba (respecto al eje $X$) la parte del
+gráfico de $f$ que estaba bajo el eje $X$ (es decir, donde $x<0$), dejando igual la parte donde
+$f(x)\ge0$.
+\end{enumerate}
+
+\item Sea $f(x) = \dfrac{1}{x}$. Determine dominio y recorrido de
+$g(x) = \dfrac{1}{x-2}$ y explique por qué el gráfico de $g$ es el de $f$
+trasladado.
+
+\textit{Solución:} $\mathsf{Dom}\,g = \mathbb{R}-\{2\}$, $\mathsf{Rec}\,g = \mathbb{R}-\{0\}$
+(igual que $f$, ya que una traslación horizontal no afecta el recorrido). Como
+$g(x) = f(x-2)$, el gráfico de $g$ es exactamente el de $f$ trasladado $2$ unidades hacia la
+derecha.
+
+\item Estudie signo, paridad y monotonía de $f(x) = \dfrac{1}{x^2}$ en
+$]-\infty,0[$ (es decir, complete el análisis que en la materia solo se hizo
+en $[0,\infty[$).
+
+\textit{Solución:} \textbf{Signo:} $f(x)>0$ para todo $x\in\,]-\infty,0[$, pues $x^2>0$ cuando
+$x\neq0$. \textbf{Paridad:} $f(-x) = \dfrac{1}{(-x)^2} = \dfrac{1}{x^2} = f(x)$, así que $f$ es
+par; el comportamiento en $]-\infty,0[$ es el reflejo especular (respecto al eje $Y$) del
+comportamiento en $]0,\infty[$. \textbf{Monotonía:} en $]-\infty,0[$, $f$ es estrictamente
+\emph{creciente}: cuando $x\to-\infty$, $f(x)\to0^+$, y cuando $x\to0^-$, $f(x)\to+\infty$; es
+decir, a medida que $x$ aumenta (se acerca a $0$ por la izquierda), $f(x)$ aumenta.
+
+\item Sea $f(x) = \dfrac{-1}{x}$. Determine dominio, recorrido, paridad y los
+intervalos de crecimiento/decrecimiento de $f$, apoyándose en lo visto para
+$\dfrac{1}{x}$.
+
+\textit{Solución:} $\mathsf{Dom}\,f=\mathbb{R}-\{0\}$, $\mathsf{Rec}\,f=\mathbb{R}-\{0\}$.
+Paridad: $f(-x) = \dfrac{-1}{-x} = \dfrac{1}{x} = -f(x)$, así que $f$ es impar. Como $f$ es
+$-1$ veces $\dfrac1x$ (que es decreciente tanto en $]-\infty,0[$ como en $]0,\infty[$), al
+reflejar verticalmente se invierte la monotonía en cada tramo: $f$ es estrictamente
+\emph{creciente} en $]-\infty,0[$ y estrictamente \emph{creciente} en $]0,\infty[$ (en cada rama
+por separado).
+
+\item Sea $f(x) = \dfrac{1}{x^2} + 3$. Describa cómo se obtiene el gráfico de
+$f$ a partir del de $\dfrac{1}{x^2}$, y determine su recorrido.
+
+\textit{Solución:} El gráfico de $f$ se obtiene trasladando el de $\dfrac{1}{x^2}$ en $3$
+unidades hacia arriba. Como $\dfrac{1}{x^2}$ tiene recorrido $\,]0,\infty[$, se tiene
+$\mathsf{Rec}\,f = \,]3,\infty[$.
+
+\item \textbf{(Nivel interrogación)} Sea $f(x) = x^2$. Obtenga la fórmula explícita de
+$g(x) = -2f(x+1) + 3$, identificando \textbf{todas} las transformaciones aplicadas al gráfico de
+$f$ y el orden correcto en que deben realizarse.
+
+\textit{Solución:} $g(x) = -2(x+1)^2+3 = -2(x^2+2x+1)+3 = -2x^2-4x+1$. Transformaciones, en
+orden: (a) traslación horizontal $1$ hacia la izquierda ($x\mapsto x+1$, dentro de $f$); (b)
+dilatación vertical en factor $2$; (c) reflexión respecto al eje $X$ (el signo $-$); (d)
+traslación vertical $3$ hacia arriba.
+
+\item \textbf{(Nivel interrogación)} Sea $f(x) = \dfrac{1}{x}$. Obtenga la fórmula explícita de
+$g(x) = 3f(2x-4) + 1$, describiendo cada transformación aplicada y su orden (indicación: reescriba
+$2x-4$ como $2(x-2)$).
+
+\textit{Solución:} Escribiendo $2x-4=2(x-2)$: $g(x) = \dfrac{3}{2(x-2)}+1$, que combinando sobre
+un denominador común es $g(x) = \dfrac{3+2(x-2)}{2(x-2)} = \dfrac{2x-1}{2x-4}$. Transformaciones,
+en orden: (a) compresión horizontal en factor $2$ (el ancho se divide por $2$); (b) traslación
+horizontal $2$ hacia la derecha; (c) dilatación vertical en factor $3$; (d) traslación vertical
+$1$ hacia arriba.
+
+\item \textbf{(Nivel interrogación)} Sea $f(x) = \dfrac{1}{x^2}$ y $g(x) = f(x-3)$. Estudie el
+signo y la paridad de $g$, describa qué le ocurre a $g(x)$ cuando $x$ se acerca a $3$, y determine
+hacia qué valor se acerca $g(x)$ cuando $|x|$ es muy grande.
+
+\textit{Solución:} $g(x) = \dfrac{1}{(x-3)^2}$, con $\mathsf{Dom}\,g=\mathbb{R}-\{3\}$.
+\textbf{Signo:} $g(x)>0$ para todo $x\neq3$, pues es un cuadrado en el denominador. \textbf{Paridad:}
+$g(-x) = \dfrac{1}{(-x-3)^2} = \dfrac{1}{(x+3)^2}$, que no coincide con $g(x)$ ni con $-g(x)$ en
+general, así que $g$ no es par ni impar (la simetría de $f$ se trasladó junto con el gráfico, y
+ahora es simetría respecto a la recta $x=3$, no respecto al origen). \textbf{Cerca de $x=3$:} a
+medida que $x\to3$ (por cualquier lado), $(x-3)^2\to0^+$, por lo que $g(x)\to+\infty$: el valor de
+$g$ crece sin cota. \textbf{Para $|x|$ grande:} $g(x)\to0^+$, es decir $g(x)$ se acerca a $0$
+manteniéndose siempre positivo.
+
+\end{enumerate}
+
+\end{document}

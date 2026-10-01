@@ -1,0 +1,230 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\newtheorem{definicion}{Definición}[section]
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{proposicion}{Proposición}[section]
+\newtheorem{corolario}{Corolario}[section]
+\newtheorem{axioma}{Axioma}[section]
+\theoremstyle{remark}
+\newtheorem*{ejemplo}{Ejemplo}
+\newtheorem*{observacion}{Observación}
+
+\title{Semana 2 -- Materia}
+\author{Tutorías -- Introducción al Cálculo}
+\date{10/08--14/08/2026}
+
+\begin{document}
+\maketitle
+
+\section{Teorema del factor y aplicaciones}
+
+Recordemos de la tutoría anterior que, para un polinomio $P$ y un número
+$\alpha$, se tiene que $\alpha$ es raíz de $P$ si y solamente si $P$ es
+divisible por $(x-\alpha)$. Esta equivalencia (a veces llamada
+\textbf{Teorema del Factor}) tiene consecuencias importantes sobre cuántas
+raíces puede tener un polinomio y sobre cómo encontrarlas.
+
+\subsection{Cantidad de raíces de un polinomio}
+
+\begin{teorema}\label{teo:raices}
+Si un polinomio $P(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$, con $a_n \neq 0$,
+tiene más de $n$ raíces distintas, entonces necesariamente todos sus
+coeficientes son nulos (es decir, $P(x)=0$ para todo $x$).
+\end{teorema}
+
+La idea de la demostración es aplicar repetidamente la relación raíz-divisibilidad:
+si $\alpha_1$ es raíz de $P$, entonces $P(x) = (x-\alpha_1)Q(x)$ con $Q$ de
+grado menor. Si además $\alpha_2 \neq \alpha_1$ es raíz de $P$, entonces
+$P(\alpha_2) = (\alpha_2-\alpha_1)Q(\alpha_2) = 0$, y como $\alpha_2 \neq
+\alpha_1$, debe ser $\alpha_2$ raíz de $Q$. Repitiendo este argumento con
+$\alpha_1,\dots,\alpha_n$ raíces distintas de $P$, se llega a
+$$P(x) = (x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n)\,k$$
+para alguna constante $k$. Si hubiera todavía otra raíz distinta de las
+anteriores, forzosamente $k=0$, y al desarrollar el producto todos los
+coeficientes de $P$ resultan nulos. En otras palabras: \textbf{un polinomio no
+nulo de grado $n$ tiene a lo más $n$ raíces distintas}.
+
+\begin{corolario}
+Dos polinomios toman los mismos valores para cada $x$ si y solamente si sus
+coeficientes homólogos son iguales.
+\end{corolario}
+
+En efecto, si dos polinomios $P$ y $Q$ coinciden para todo $x$, entonces el
+polinomio diferencia $P-Q$ tiene infinitas raíces (todos los reales), muchas
+más que su grado, así que por el Teorema~\ref{teo:raices} todos sus
+coeficientes deben ser $0$, es decir, los coeficientes de $P$ y $Q$ coinciden.
+El recíproco es inmediato.
+
+\begin{ejemplo}
+Encontremos constantes $a, b \in \mathbb{R}$ tales que
+$$x^3 + ax + b = (x-1)(x-2)(x+3) \quad \text{para todo } x.$$
+Desarrollamos el lado derecho:
+$$(x-1)(x-2) = x^2 - 3x + 2, \qquad (x^2-3x+2)(x+3) = x^3 - 7x + 6.$$
+Como ambos polinomios deben coincidir para todo $x$, el Corolario anterior
+nos dice que sus coeficientes homólogos deben ser iguales. Comparando
+$x^3 + 0\cdot x^2 + ax + b$ con $x^3 + 0 \cdot x^2 - 7x + 6$, obtenemos
+$a = -7$ y $b = 6$.
+\end{ejemplo}
+
+\subsection{Raíces racionales de un polinomio}
+
+Cuando un polinomio tiene coeficientes enteros, el siguiente resultado acota
+mucho la búsqueda de sus raíces racionales.
+
+\begin{proposicion}\label{prop:raicesracionales}
+Sea $P(x) = a_0 + a_1x + \cdots + a_nx^n$ un polinomio con coeficientes
+enteros. Si $P$ tiene una raíz racional $\frac{p}{q}$, con $p,q$ enteros
+primos relativos (sin factores comunes salvo $1$), entonces $p$ divide a
+$a_0$ y $q$ divide a $a_n$.
+\end{proposicion}
+
+La idea es reemplazar $x=\frac{p}{q}$ en $P(x)=0$ y multiplicar por $q^n$
+para obtener
+$$a_0q^n + a_1pq^{n-1} + \cdots + a_np^n = 0.$$
+Despejando el término $a_np^n$ al lado derecho, el resto de la suma es
+múltiplo de $q$, así que $q$ divide a $a_np^n$; como $p$ y $q$ son primos
+relativos, $q$ debe dividir a $a_n$. De forma simétrica, despejando el
+término $a_0q^n$, se obtiene que $p$ divide a $a_0$.
+
+Esta proposición \textbf{no garantiza} que esos candidatos $\frac{p}{q}$ sean
+efectivamente raíces: solo reduce la búsqueda a una lista finita de
+candidatos, que luego hay que verificar uno por uno evaluando el polinomio
+(o usando el Teorema del Resto).
+
+\begin{ejemplo}
+Busquemos las raíces racionales de $P(x) = 2x^3 - x^2 - 13x - 6$.
+
+Los divisores de $a_0 = -6$ son $\pm1,\pm2,\pm3,\pm6$, y los divisores de
+$a_3 = 2$ son $\pm1,\pm2$. Los candidatos $\frac{p}{q}$ son entonces
+$$\pm1,\ \pm2,\ \pm3,\ \pm6,\ \pm\tfrac12,\ \pm\tfrac32.$$
+Probamos $x=3$: $P(3) = 2(27) - 9 - 39 - 6 = 54-9-39-6=0$. Así, $3$ es raíz.
+Dividiendo $P(x)$ por $(x-3)$ con coeficientes indeterminados ($\alpha=3$,
+$a_3=2,a_2=-1,a_1=-13,a_0=-6$):
+$$c_3=2,\quad c_2=-1+3(2)=5,\quad c_1=-13+3(5)=2,\quad b_0=-6+3(2)=0,$$
+obtenemos $Q(x) = 2x^2+5x+2$. Factorizando (o usando la fórmula
+cuadrática), $2x^2+5x+2 = (2x+1)(x+2)$, con raíces $x=-\tfrac12$ y $x=-2$.
+Por lo tanto,
+$$P(x) = (x-3)(2x+1)(x+2),$$
+y las raíces racionales de $P$ son $3,\ -\tfrac12,\ -2$ — todas efectivamente
+dentro de la lista de candidatos que predecía la Proposición~\ref{prop:raicesracionales}.
+\end{ejemplo}
+
+\begin{observacion}
+El libro menciona, sin demostración (por ser demasiado avanzada para este
+curso), un resultado general conocido como el \textbf{Teorema Fundamental
+del Álgebra}: todo polinomio no constante tiene al menos una raíz, si se
+permite ampliar el conjunto de números donde se buscan las raíces más allá
+de los reales. En este curso no hemos estudiado ese conjunto ampliado de
+números, así que por ahora basta con tener presente que \emph{no todo
+polinomio tiene raíces reales} (por ejemplo, $P(x) = x^2+1$ no se anula para
+ningún $x$ real), y que las herramientas de esta sección (Teorema del
+Factor, Proposición~\ref{prop:raicesracionales}) sirven para encontrar las
+raíces \emph{reales} (en particular las racionales) cuando existen.
+\end{observacion}
+
+\section{Axiomas de Orden I}
+
+Así como los números reales satisfacen axiomas para la suma y el producto,
+también satisfacen axiomas que describen la relación "menor que" ($<$). A
+partir de estos axiomas se puede demostrar cualquier otra propiedad del
+orden.
+
+\subsection{Los axiomas}
+
+\begin{axioma}[Orden lineal]
+Para todo $x,y \in \mathbb{R}$, si $x \neq y$ entonces $x<y$ o $y<x$.
+\end{axioma}
+
+\begin{axioma}[Asimetría]
+Para todo $x,y \in \mathbb{R}$, si $x<y$ entonces no se tiene $y<x$.
+\end{axioma}
+
+\begin{axioma}[Transitividad]
+Para todo $x,y,z \in \mathbb{R}$, si $x<y$ e $y<z$ entonces $x<z$.
+\end{axioma}
+
+\begin{axioma}[Compatibilidad con la suma]
+Para todo $x,y,z \in \mathbb{R}$, si $x<y$ entonces $x+z<y+z$.
+\end{axioma}
+
+\begin{axioma}[Compatibilidad con el producto por positivos]
+Para todo $x,y,z \in \mathbb{R}$, si $x<y$ y $0<z$ entonces $x\cdot z < y \cdot z$.
+\end{axioma}
+
+A partir de estos cinco axiomas se definen las demás relaciones de orden
+habituales.
+
+\begin{definicion}[Relaciones de orden]
+Sean $x,y \in \mathbb{R}$. Entonces:
+\begin{enumerate}[label=(\Roman*)]
+\item $x>y \iff y<x$ \quad ($x$ es mayor que $y$).
+\item $x\geq y \iff (x>y \ \text{o} \ x=y)$ \quad ($x$ es mayor o igual que $y$).
+\item $x\leq y \iff (x<y \ \text{o} \ x=y)$ \quad ($x$ es menor o igual que $y$).
+\item $x$ es \textbf{positivo} $\iff x>0$.
+\item $x$ es \textbf{negativo} $\iff x<0$.
+\end{enumerate}
+\end{definicion}
+
+\subsection{Consecuencias de los axiomas}
+
+Con solo estos axiomas y definiciones se pueden demostrar muchas propiedades
+que usamos constantemente al trabajar con desigualdades, entre ellas:
+
+\begin{teorema}\label{teo:orden}
+Para $x,y,z \in \mathbb{R}$:
+\begin{enumerate}[label=(\Roman*)]
+\item $\neg(x<x)$.
+\item $\neg(x<y) \iff x \geq y$.
+\item $x>0 \iff -x<0$.
+\item $(x>0 \ \text{y} \ y>0) \Rightarrow x+y>0$.
+\item $x>y \iff x-y>0$.
+\item $(x>0 \ \text{y} \ y>0) \Rightarrow xy>0$.
+\item $1>0$.
+\item $x^2 \geq 0$.
+\end{enumerate}
+\end{teorema}
+
+Veamos cómo se demuestran algunas de estas propiedades directamente a partir
+de los axiomas, a modo de ejemplo.
+
+\begin{ejemplo}[Demostración de (I)]
+Supongamos, por contradicción, que $x<x$. Aplicando el axioma de asimetría
+con $y=x$: si $x<x$ entonces no puede ser $x<x$, lo cual es una
+contradicción inmediata. Luego $\neg(x<x)$.
+\end{ejemplo}
+
+\begin{ejemplo}[Demostración de (V)]
+Queremos ver que $x>y \iff x-y>0$, es decir (usando la definición de $>$),
+que $y<x \iff 0<x-y$.
+\begin{itemize}
+\item[$(\Rightarrow)$] Si $y<x$, sumamos $-y$ a ambos lados usando el axioma
+de compatibilidad con la suma (con $z=-y$): $y+(-y) < x+(-y)$, es decir,
+$0 < x-y$.
+\item[$(\Leftarrow)$] Si $0<x-y$, sumamos $y$ a ambos lados: $0+y < (x-y)+y$,
+es decir, $y<x$.
+\end{itemize}
+\end{ejemplo}
+
+Este tipo de argumento (sumar o multiplicar por algo conveniente, usando
+solo los axiomas) permite derivar propiedades nuevas. Por ejemplo:
+
+\begin{ejemplo}
+Demostremos que si $x<y$ entonces $-y<-x$. Partimos de $x<y$ y sumamos
+$(-x-y)$ a ambos lados (axioma de compatibilidad con la suma, con
+$z=-x-y$):
+$$x+(-x-y) < y+(-x-y) \ \Longrightarrow\ -y < -x.$$
+\end{ejemplo}
+
+\begin{ejemplo}
+Como ilustración numérica del axioma de compatibilidad con el producto:
+sabemos que $2<5$ y que $3>0$; el axioma nos garantiza entonces que
+$2\cdot 3 < 5 \cdot 3$, es decir, $6<15$, lo cual es evidentemente cierto.
+\end{ejemplo}
+
+\end{document}

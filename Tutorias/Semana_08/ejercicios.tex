@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\title{Semana 8 -- Ejercicios}
+\author{Tutorías -- Introducción al Cálculo}
+\date{28/9--2/10/2026}
+
+\begin{document}
+\maketitle
+
+\section{Ejercicios de la semana}
+
+\begin{enumerate}[label=\arabic*.]
+
+\item Determine si $f(x) = 3x - 7$ es inyectiva. Justifique usando la
+definición.
+
+\textit{Solución:} Sea $f(x)=f(y)$, es decir $3x-7=3y-7$. Entonces $3x=3y$, de donde $x=y$. Luego
+$f$ es inyectiva.
+
+\item Determine si $f(x) = x^2 + 2$, con $\mathsf{Dom}\,f = \mathbb{R}$, es
+inyectiva. Si no lo es, dé explícitamente dos elementos distintos del dominio
+con la misma imagen.
+
+\textit{Solución:} No es inyectiva: $f(1) = 3 = f(-1)$, con $1 \neq -1$.
+
+\item Sea $f(x) = \dfrac{2x-1}{x+3}$. Determine $\mathsf{Dom}\,f$ y demuestre
+que $f$ es inyectiva.
+
+\textit{Solución:} $\mathsf{Dom}\,f = \mathbb{R}-\{-3\}$. Si $f(x)=f(y)$, entonces
+$(2x-1)(y+3)=(2y-1)(x+3)$, es decir $2xy+6x-y-3 = 2xy+6y-x-3$, de donde $6x-y=6y-x$, o sea
+$7x=7y$, y así $x=y$. Luego $f$ es inyectiva.
+
+\item Para la función $f$ del ejercicio anterior, determine $\mathsf{Rec}\,f$
+y encuentre la expresión de $f^{-1}(y)$.
+
+\textit{Solución:} De $y=\dfrac{2x-1}{x+3}$ despejamos: $y(x+3)=2x-1 \Rightarrow x(y-2)=-1-3y
+\Rightarrow x=\dfrac{3y+1}{2-y}$. Luego $f^{-1}(y)=\dfrac{3y+1}{2-y}$, con $y\neq 2$, de donde
+$\mathsf{Rec}\,f = \mathbb{R}-\{2\}$.
+
+\item Sea $f:\mathbb{R}\to\mathbb{R}$ definida por $f(x) = -3x+6$. Demuestre
+que $f$ es biyección de $\mathbb{R}$ sobre $\mathbb{R}$ y determine $f^{-1}$.
+
+\textit{Solución:} Inyectiva: $-3x+6=-3y+6 \Rightarrow x=y$. Sobre: dado $y\in\mathbb{R}$, sea
+$x=\dfrac{6-y}{3}$; entonces $f(x)=-3\left(\dfrac{6-y}{3}\right)+6=-(6-y)+6=y$. Luego $f$ es
+biyección de $\mathbb{R}$ sobre $\mathbb{R}$ y $f^{-1}(y)=\dfrac{6-y}{3}=2-\dfrac{y}{3}$.
+
+\item Sea $f:\mathbb{N}\to\mathbb{N}$ definida por $f(x) = x+5$. Determine si
+$f$ es uno a uno y si es sobre $\mathbb{N}$. ¿Es $f$ biyección de $\mathbb{N}$
+sobre $\mathbb{N}$?
+
+\textit{Solución:} $f$ es uno a uno ($x+5=y+5\Rightarrow x=y$), pero no es sobre $\mathbb{N}$: por
+ejemplo $1\notin\mathsf{Rec}\,f$, pues $1=x+5$ obligaría a $x=-4\notin\mathbb{N}$. Por lo tanto $f$
+no es biyección de $\mathbb{N}$ sobre $\mathbb{N}$.
+
+\item Sea $f$ definida por
+\[
+f(x) = \begin{cases} x+1 & \text{si } x \ge 0 \\ -x+1 & \text{si } x < 0. \end{cases}
+\]
+Determine si $f$ es inyectiva. (Indicación: considere los tramos por
+separado y también la combinación entre tramos.)
+
+\textit{Solución:} No es inyectiva: para $x\ge0$, $f(x)=x+1$ recorre $[1,\infty[$; para $x<0$,
+$f(x)=-x+1$ recorre $\,]1,\infty[$. Ambos tramos se superponen, por ejemplo $f(1)=2$ y $f(-1)=2$,
+con $1\neq-1$.
+
+\item Sean $f$ y $g$ biyecciones de $A$ sobre $B$ y de $B$ sobre $C$,
+respectivamente, con $f(x) = 2x$ ($A=B=\mathbb{R}$) y $g(x) = x+1$
+($B=C=\mathbb{R}$). Verifique directamente que $g\circ f$ es biyección de
+$\mathbb{R}$ sobre $\mathbb{R}$ y determine $(g\circ f)^{-1}$.
+
+\textit{Solución:} $g\circ f(x) = g(2x) = 2x+1$, que es inyectiva y sobre $\mathbb{R}$ (es lineal
+con pendiente no nula). Para hallar la inversa: $y=2x+1 \Rightarrow x=\dfrac{y-1}{2}$, luego
+$(g\circ f)^{-1}(y) = \dfrac{y-1}{2}$.
+
+\item Sea $f(x) = \sqrt{x-1}$ con $\mathsf{Dom}\,f = [1,\infty[$. Demuestre que
+$f$ es inyectiva y determine su función inversa, indicando dominio y
+recorrido.
+
+\textit{Solución:} Si $f(x)=f(y)$ con $x,y\ge1$, entonces $\sqrt{x-1}=\sqrt{y-1}$, y elevando al
+cuadrado, $x-1=y-1$, de donde $x=y$. Luego $f$ es inyectiva. Como $x$ recorre $[1,\infty[$, $x-1$
+recorre $[0,\infty[$ y $\sqrt{x-1}$ también recorre $[0,\infty[$, así $\mathsf{Rec}\,f=[0,\infty[$.
+De $y=\sqrt{x-1}$ se obtiene $x=y^2+1$, luego $f^{-1}(y)=y^2+1$, con dominio $[0,\infty[$ y
+recorrido $[1,\infty[$.
+
+\item \textbf{(Nivel interrogación)} Sea $f(x) = \dfrac{2x+1}{x-4}$. Determine el dominio maximal
+de $f$, demuestre que $f$ es inyectiva, determine su recorrido y su función inversa, justificando
+explícitamente por qué un cierto valor particular queda excluido del recorrido.
+
+\textit{Solución:} $\mathsf{Dom}\,f=\mathbb{R}-\{4\}$. Si $f(x)=f(y)$:
+$(2x+1)(y-4)=(2y+1)(x-4)$, es decir $2xy-8x+y-4=2xy-8y+x-4$, de donde $-9x=-9y$, o sea $x=y$: $f$
+es inyectiva. Despejando de $y=\dfrac{2x+1}{x-4}$: $y(x-4)=2x+1 \Rightarrow x(y-2)=1+4y
+\Rightarrow x=\dfrac{4y+1}{y-2}$, expresión definida solo si $y\neq2$ (en efecto, $f(x)=2$
+llevaría a $2x+1=2x-8$, es decir $1=-8$, lo cual es falso, así que $2$ nunca es alcanzado). Luego
+$\mathsf{Rec}\,f=\mathbb{R}-\{2\}$ y $f^{-1}(y)=\dfrac{4y+1}{y-2}$.
+
+\item \textbf{(Nivel interrogación)} Sea $f:\mathbb{R}\to\mathbb{R}$ definida por
+$f(x)=x^3-1$. Demuestre que $f$ es inyectiva usando directamente la definición (sin asumir que
+$x\mapsto x^3$ es estrictamente creciente), y determine si $f$ es biyección de $\mathbb{R}$ sobre
+$\mathbb{R}$.
+
+\textit{Solución:} Supongamos $f(x)=f(y)$, es decir $x^3-1=y^3-1$, de donde $x^3=y^3$, o sea
+$x^3-y^3=0$. Factorizando, $(x-y)(x^2+xy+y^2)=0$. Como
+$x^2+xy+y^2 = \left(x+\dfrac{y}{2}\right)^2+\dfrac{3y^2}{4} \ge 0$, y esta expresión vale $0$ solo
+si $x=0$ e $y=0$ simultáneamente (en cuyo caso también $x=y$), concluimos que en cualquier caso
+debe tenerse $x-y=0$, es decir $x=y$. Luego $f$ es inyectiva. Además $f$ es sobre $\mathbb{R}$:
+dado $c\in\mathbb{R}$, basta tomar $x=\sqrt[3]{c+1}$ (la raíz cúbica de cualquier real existe),
+y entonces $f(x)=(\sqrt[3]{c+1})^3-1=c$. Luego $f$ es biyección de $\mathbb{R}$ sobre $\mathbb{R}$.
+
+\item \textbf{(Nivel interrogación)} Sea $f(x) = \dfrac{x}{x^2+1}$, con $\mathsf{Dom}\,f =
+\mathbb{R}$. Demuestre que $f$ \textbf{no} es inyectiva, exhibiendo explícitamente dos valores
+distintos del dominio con la misma imagen (indicación: pruebe con $x$ y $1/x$, para $x\neq0$).
+
+\textit{Solución:} Para $x\neq0$, calculemos $f(1/x) = \dfrac{1/x}{(1/x)^2+1} =
+\dfrac{1/x}{(1+x^2)/x^2} = \dfrac{1}{x}\cdot\dfrac{x^2}{1+x^2} = \dfrac{x}{1+x^2} = f(x)$. Por
+ejemplo, con $x=2$: $f(2) = \dfrac{2}{5}$ y $f(1/2) = \dfrac{1/2}{5/4} = \dfrac{2}{5}$. Como
+$f(2)=f(1/2)$ con $2\neq \tfrac12$, $f$ no es inyectiva.
+
+\item \textbf{(Nivel interrogación)} Sea $f:\mathbb{R}\to\mathbb{R}$ definida por
+\[
+f(x) = \begin{cases} \dfrac{x-1}{x+1} & \text{si } x \ge 0 \\[2mm] \dfrac{x-3}{x-1} & \text{si } x < 0. \end{cases}
+\]
+Demuestre que $f$ es inyectiva.
+
+\textit{Solución:} Inyectividad en cada tramo (vía la definición): para $x,y\ge0$ con $f(x)=f(y)$,
+$(x-1)(y+1)=(y-1)(x+1) \Rightarrow xy+x-y-1=xy+y-x-1 \Rightarrow 2x=2y \Rightarrow x=y$. Para $x,y<0$
+con $f(x)=f(y)$, $(x-3)(y-1)=(y-3)(x-1) \Rightarrow xy-x-3y+3=xy-y-3x+3 \Rightarrow 2x=2y \Rightarrow
+x=y$. Como los dominios $[0,\infty[$ y $\,]-\infty,0[$ ya son disjuntos, falta ver que los
+recorridos de ambos tramos no se intersectan. Para $x\ge0$: $\dfrac{x-1}{x+1}=1-\dfrac{2}{x+1}$;
+como $x+1\in[1,\infty[$, se tiene $\dfrac{2}{x+1}\in\,]0,2]$, luego $f(x)\in[-1,1[$. Para $x<0$:
+$\dfrac{x-3}{x-1}=1-\dfrac{2}{x-1}$; como $x-1\in\,]-\infty,-1[$, se tiene
+$\dfrac{2}{x-1}\in\,]-2,0[$, luego $f(x)\in\,]1,3[$. Como $[-1,1[\,\cap\,]1,3[=\emptyset$, ningún
+valor de un tramo coincide con uno del otro. Junto con la inyectividad dentro de cada tramo, $f$ es
+inyectiva en $\mathbb{R}$.
+
+\item \textbf{(Nivel interrogación)} Sea $f:\mathbb{R}\to\mathbb{R}$ definida por
+\[
+f(x) = \begin{cases} \dfrac{x+2}{x+1} & \text{si } x \ge 0 \\[2mm] \dfrac{x-5}{x-3} & \text{si } x < 0. \end{cases}
+\]
+Determine si $f$ es inyectiva.
+
+\textit{Solución:} Cada tramo, por separado, es inyectivo: para $x,y\ge0$,
+$(x+2)(y+1)=(y+2)(x+1) \Rightarrow x+2y=y+2x \Rightarrow x=y$; para $x,y<0$,
+$(x-5)(y-3)=(y-5)(x-3) \Rightarrow -3x-5y=-3y-5x \Rightarrow 2x=2y \Rightarrow x=y$. Sin embargo, al
+evaluar: $f(1)=\dfrac{1+2}{1+1}=\dfrac{3}{2}$ y $f(-1)=\dfrac{-1-5}{-1-3}=\dfrac{-6}{-4}=\dfrac{3}{2}$.
+Como $1\ge0$ y $-1<0$ caen en tramos distintos, con $1\neq-1$ pero $f(1)=f(-1)=\dfrac32$, $f$
+\textbf{no} es inyectiva, a pesar de que cada tramo individualmente sí lo era. Esto muestra que la
+inyectividad de cada tramo por separado no basta: siempre hay que revisar también la posible
+colisión entre tramos, comparando recorridos.
+
+\end{enumerate}
+
+\end{document}

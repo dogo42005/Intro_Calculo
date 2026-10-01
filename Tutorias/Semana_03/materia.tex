@@ -1,0 +1,156 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}
+\newtheorem{axioma}{Axioma}
+\theoremstyle{definition}
+\newtheorem{definicion}{Definición}
+\newtheorem{ejemplo}{Ejemplo}
+
+\title{Semana 3 -- Materia}
+\author{Tutorías -- Introducción al Cálculo}
+\date{17/08--21/08/2026}
+
+\begin{document}
+\maketitle
+
+\section*{Nota sobre la ubicación en el libro}
+El cronograma del curso etiqueta el tema ``Valor absoluto'' como si perteneciera a la sección 2.6
+del libro. Sin embargo, en el libro de texto (Dra. Irene F. Mikenberg) el valor absoluto se define
+en la \textbf{Definición 2.7}, dentro de la sección \textbf{2.3 (Orden en $\mathbb{R}$)}, justo después
+de los teoremas de orden. Esta guía sigue la ubicación real del libro.
+
+\section{Axiomas de Orden II}
+
+En la tutoría de la Semana 2 se introdujeron los axiomas de orden $(\mathcal{O}1)$--$(\mathcal{O}5)$
+y la relación $<$ en $\mathbb{R}$. A partir de ellos, el libro define el resto de las relaciones de
+orden y demuestra una serie de propiedades (teoremas) que usamos constantemente para manipular
+desigualdades. Repasamos aquí esa segunda parte.
+
+\subsection{Relaciones de orden derivadas}
+
+A partir de la relación primitiva $<$, se definen (Definición 2.6) las relaciones derivadas:
+\begin{itemize}[nosep]
+  \item $x > y \leftrightarrow y < x$ \quad (\emph{$x$ es mayor que $y$}).
+  \item $x \ge y \leftrightarrow (x > y \lor x = y)$ \quad (\emph{$x$ es mayor o igual que $y$}).
+  \item $x \le y \leftrightarrow (x < y \lor x = y)$ \quad (\emph{$x$ es menor o igual que $y$}).
+  \item $x$ es \emph{positivo} $\leftrightarrow x > 0$.
+  \item $x$ es \emph{negativo} $\leftrightarrow x < 0$.
+\end{itemize}
+
+Es decir, $>$, $\ge$ y $\le$ no son axiomas nuevos: son abreviaturas construidas sobre $<$ y $=$.
+Esto es importante porque significa que cualquier propiedad de $>$, $\ge$ o $\le$ debe poder
+demostrarse reduciéndola, tarde o temprano, a propiedades de $<$ y a los axiomas de orden y cuerpo.
+
+\subsection{Teorema 2.3: propiedades básicas del orden}
+
+El Teorema 2.3 reúne las propiedades más usadas del orden en $\mathbb{R}$. Sean $x,y,z,u \in \mathbb{R}$:
+
+\begin{enumerate}[label=(\Roman*)]
+  \item $\neg(x < x)$ \quad (irreflexividad estricta: nada es estrictamente menor que sí mismo).
+  \item $\neg(x<y) \leftrightarrow x \ge y$ \quad (negar ``$<$'' equivale a ``$\ge$'').
+  \item $x > 0 \leftrightarrow (-x) < 0$.
+  \item $(x>0 \land y>0) \rightarrow x+y>0$.
+  \item $(x<y \land z<u) \rightarrow x+z<y+u$ \quad (las desigualdades del mismo sentido se suman).
+  \item $x>y \leftrightarrow x-y>0$.
+  \item $(x>0 \land y>0) \rightarrow x\cdot y>0$.
+  \item $1>0$.
+  \item $x>0 \rightarrow \dfrac{1}{x}>0$.
+  \item $x^2 \ge 0$ \quad (todo cuadrado es no negativo).
+  \item $(x<y \land z<0) \rightarrow x\cdot z > y\cdot z$ \quad (¡al multiplicar por un número negativo la
+        desigualdad se invierte!).
+  \item $(x>0 \land x<y) \rightarrow \dfrac{1}{x} > \dfrac{1}{y}$.
+  \item $x<y \rightarrow x < \dfrac{x+y}{2} < y$ \quad (el promedio siempre queda estrictamente entre
+        los dos números).
+  \item $x-1<x<x+1$.
+\end{enumerate}
+
+La idea central de la demostración (el libro prueba (I)--(IV) y deja el resto al lector) es que
+\emph{todo} se reduce a los axiomas $(\mathcal{O}1)$--$(\mathcal{O}5)$ vía las definiciones anteriores.
+Por ejemplo, (III) se demuestra sumando $-x$ a ambos lados de $0<x$ usando $(\mathcal{O}4)$, y (VIII)
+($1>0$) se demuestra por contradicción: si $1 \le 0$, entonces (usando (II) y (VI)) se llega a
+$-1>0$ y $0>-1$ simultáneamente, lo que junto con $(\mathcal{O}3)$ produce $-1<-1$, contradiciendo (I).
+
+\begin{ejemplo}
+Probar, usando el Teorema 2.3, que si $a<b$ y $c>0$ entonces $ac < bc$.
+
+\emph{Solución.} Por (VI), $a<b \leftrightarrow b-a>0$. Como $c>0$, por (VII) $(b-a)\cdot c>0$, es decir
+$bc-ac>0$, y nuevamente por (VI), $bc>ac$, o sea $ac<bc$.
+\end{ejemplo}
+
+\begin{ejemplo}
+Probar que si $0<a<b$, entonces $a^2<b^2$.
+
+\emph{Solución.} Como $a<b$ y $a>0$, por la propiedad del ejemplo anterior (multiplicar por $a>0$)
+se obtiene $a\cdot a < b\cdot a$, es decir $a^2<ab$. Análogamente, multiplicando $a<b$ por $b>0$ se
+obtiene $ab<b^2$. Por (V) del Teorema 2.3 (sumar desigualdades del mismo sentido, aquí encadenadas),
+$a^2 < ab < b^2$, luego $a^2<b^2$.
+\end{ejemplo}
+
+\section{Valor Absoluto (Definición 2.7)}
+
+\subsection{Definición}
+
+Para $x \in \mathbb{R}$, se define
+\[
+  |x| = \begin{cases} x & \text{si } x \ge 0, \\ -x & \text{si } x<0. \end{cases}
+\]
+Intuitivamente, $|x|$ es la ``distancia de $x$ al $0$''. Por ejemplo $|5|=5$ y $|-7|=-(-7)=7$.
+
+\subsection{Teorema 2.4: propiedades del valor absoluto}
+
+Sean $x,y \in \mathbb{R}$:
+\begin{enumerate}[label=(\Roman*)]
+  \item $|x|\ge 0$.
+  \item $|x| \ge x$.
+  \item $|x|=0 \leftrightarrow x=0$.
+  \item Si $y>0$: $|x|=y \leftrightarrow (x=y \lor x=-y)$.
+  \item Si $y>0$: $|x|<y \leftrightarrow -y<x<y$.
+  \item Si $y>0$: $|x|>y \leftrightarrow (x>y \lor x<-y)$.
+  \item Si $y>0$: $|x|\le y \leftrightarrow -y\le x\le y$.
+  \item Si $y>0$: $|x|\ge y \leftrightarrow (x\ge y \lor x\le -y)$.
+  \item $|x\cdot y| = |x|\cdot|y|$.
+  \item Si $y\neq 0$: $\left|\dfrac{x}{y}\right| = \dfrac{|x|}{|y|}$.
+  \item $|-x|=|x|$.
+  \item $-|x|\le x\le |x|$.
+  \item \textbf{Desigualdad triangular:} $|x+y|\le |x|+|y|$.
+  \item $\big||x|-|y|\big| \le |x-y|$.
+\end{enumerate}
+
+Las propiedades (V)--(VIII) son las que más se usan en la práctica: convierten una desigualdad con
+valor absoluto en una desigualdad ``doble'' (o una disyunción) sin valor absoluto, y son la base para
+resolver ecuaciones e inecuaciones con valor absoluto (tema de la Semana 5).
+
+La desigualdad triangular (XIII) se demuestra sumando $x\le|x|$ con $y\le|y|$ (lo que da
+$x+y\le|x|+|y|$) y $x\ge -|x|$ con $y\ge -|y|$ (lo que da $x+y\ge -(|x|+|y|)$); combinando ambas
+acotaciones con la propiedad (VII) se obtiene $|x+y|\le|x|+|y|$. La propiedad (XIV) se obtiene
+aplicando (XIII) dos veces, escribiendo $x=(x-y)+y$ y $y=(y-x)+x$.
+
+\begin{ejemplo}
+Calcular $|3-8|$ y $|(-2)\cdot 5|$.
+
+\emph{Solución.} $|3-8|=|-5|=5$. Por (IX), $|(-2)\cdot 5| = |-2|\cdot|5| = 2\cdot 5 = 10$.
+\end{ejemplo}
+
+\begin{ejemplo}
+Usando (V) del Teorema 2.4, encontrar todos los $x\in\mathbb{R}$ tales que $|x-3|<2$.
+
+\emph{Solución.} Como $2>0$, por (V), $|x-3|<2 \leftrightarrow -2<x-3<2$. Sumando $3$ a los tres
+miembros: $1<x<5$. El conjunto solución es el intervalo $]1,5[$.
+\end{ejemplo}
+
+\begin{ejemplo}
+Demostrar que para todo $x,y\in\mathbb{R}$, $|x-y| \ge |x|-|y|$ (caso particular usado en muchas
+demostraciones posteriores).
+
+\emph{Solución.} Por la desigualdad triangular (XIII) aplicada a $(x-y)$ e $y$: $|x| = |(x-y)+y| \le
+|x-y|+|y|$. Restando $|y|$ a ambos lados (usando (VI) del Teorema 2.3), $|x|-|y| \le |x-y|$.
+\end{ejemplo}
+
+\end{document}

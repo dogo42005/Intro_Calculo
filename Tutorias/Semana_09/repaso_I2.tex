@@ -1,0 +1,106 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\title{Repaso para la Interrogación 2 (I2)}
+\author{Tutorías -- Introducción al Cálculo}
+\date{Tutoría del jueves 8/10/2026 (última antes de la I2 del 14/10)}
+
+\begin{document}
+\maketitle
+
+Repaso acumulativo de \textbf{todo lo visto sobre funciones} desde la Semana 6 (definición y
+gráfico, transformaciones, funciones racionales, inyectividad, biyección, composición e inversa),
+calibrado según el nivel de exigencia de interrogaciones reales del curso (ver \texttt{Pautas/}).
+
+\begin{enumerate}[label=\arabic*.]
+
+\item \textbf{(Dominio y recorrido paramétrico)} Sea $a\in\mathbb{R}$ fijo y
+$f(x) = \sqrt{x^2 - 4x + a}$. Determine, en función de $a$, el dominio maximal de $f$ y su
+recorrido, distinguiendo explícitamente los casos que correspondan.
+
+\textit{Solución:} Completando cuadrados, $x^2-4x+a = (x-2)^2+(a-4)$. El dominio requiere
+$(x-2)^2 \ge 4-a$.
+\begin{itemize}
+\item Si $a\ge4$: como $4-a\le0\le(x-2)^2$ siempre, $\mathsf{Dom}\,f=\mathbb{R}$.
+\item Si $a<4$: se necesita $|x-2|\ge\sqrt{4-a}$, es decir
+$\mathsf{Dom}\,f = \,]-\infty,\,2-\sqrt{4-a}] \cup [2+\sqrt{4-a},\,\infty[$.
+\end{itemize}
+Para el recorrido: como $f(x)=\sqrt{(x-2)^2+(a-4)}$,
+\begin{itemize}
+\item Si $a\ge4$: el mínimo de $(x-2)^2+(a-4)$ es $a-4\ge0$ (en $x=2$), y crece sin cota; luego
+$\mathsf{Rec}\,f = [\sqrt{a-4},\,\infty[$.
+\item Si $a<4$: en el dominio restringido, $(x-2)^2+(a-4)$ toma exactamente los valores
+$[0,\infty[$ (vale $0$ en los bordes del dominio y crece sin cota); luego $\mathsf{Rec}\,f =
+[0,\infty[$.
+\end{itemize}
+
+\item \textbf{(Transformaciones combinadas)} Sea $f(x) = x^2$. Obtenga la fórmula explícita de
+$g(x) = f(-3x+6) + 2$, y describa \textbf{todas} las transformaciones del gráfico de $f$ que
+producen el de $g$, en el orden correcto (indicación: reescriba el argumento como
+$-3(x-2)$).
+
+\textit{Solución:} $g(x) = (-3x+6)^2+2 = 9x^2-36x+38$. Escribiendo $-3x+6 = -1\cdot3\cdot(x-2)$,
+las transformaciones (aplicadas al gráfico de $f$, de adentro hacia afuera) son: (a) compresión
+horizontal en factor $3$ (el ancho se divide por $3$); (b) reflexión horizontal (el signo $-1$);
+(c) traslación horizontal en $2$ hacia la derecha; (d) traslación vertical en $2$ hacia arriba.
+El vértice de $f$ en $(0,0)$ va a parar a $(2,2)$, que es el vértice (mínimo) de $g$.
+
+\item \textbf{(Función racional completa)} Sea $f(x) = \dfrac{x^2-x-6}{x^2-1}$. Factorice
+numerador y denominador, determine los ceros de $f$, los valores de $x$ donde $f$ no está
+definida, arme una tabla de signos para determinar dónde $f$ es positiva o negativa, y determine
+hacia qué valor se acerca $f(x)$ cuando $|x|$ es muy grande.
+
+\textit{Solución:} $f(x) = \dfrac{(x-3)(x+2)}{(x-1)(x+1)}$. Ceros: $x=3$ y $x=-2$. No definida en
+$x=1$ y $x=-1$ (ahí $f(x)$ crece sin cota en valor absoluto, pues el numerador no se anula). Tabla
+de signos con puntos críticos $-2,-1,1,3$: $f>0$ en $\,]-\infty,-2[\,\cup\,]-1,1[\,\cup\,]3,\infty[$
+y $f<0$ en $\,]-2,-1[\,\cup\,]1,3[$. Para $|x|$ grande,
+$f(x) = \dfrac{1-1/x-6/x^2}{1-1/x^2} \to 1$, es decir $f(x)$ se acerca a $1$.
+
+\item \textbf{(Inyectividad, recorrido e inversa)} Sea $f(x) = \dfrac{4x+1}{2x-3}$. Determine el
+dominio maximal $A$ de $f$, demuestre que $f$ es inyectiva, determine el recorrido $B$ de $f$, y
+encuentre $f^{-1}:B\to A$.
+
+\textit{Solución:} $A=\mathbb{R}-\{3/2\}$. Si $f(x)=f(y)$: $(4x+1)(2y-3)=(4y+1)(2x-3)$, es decir
+$8xy-12x+2y-3 = 8xy-12y+2x-3$, de donde $-14x=-14y$, o sea $x=y$: $f$ es inyectiva. Despejando de
+$y=\dfrac{4x+1}{2x-3}$ se obtiene $x=\dfrac{3y+1}{2y-4}$, definido siempre que $y\neq2$; luego
+$B=\mathbb{R}-\{2\}$ y $f^{-1}(y)=\dfrac{3y+1}{2y-4}$.
+
+\item \textbf{(Composición con dominio restringido)} Sean $f(x)=\sqrt{x-1}$ (con
+$\mathsf{Dom}\,f=[1,\infty[$) y $g(x)=x^2-5$ (con $\mathsf{Dom}\,g=\mathbb{R}$). Determine
+$\mathsf{Dom}\,(f\circ g)$ y calcule $(f\circ g)(x)$.
+
+\textit{Solución:} Se necesita $g(x)\in\mathsf{Dom}\,f$, es decir $x^2-5\ge1$, o sea $x^2\ge6$, lo
+que equivale a $x\le-\sqrt6$ o $x\ge\sqrt6$. Luego
+$\mathsf{Dom}\,(f\circ g)=\,]-\infty,-\sqrt6\,]\cup[\,\sqrt6,\infty[$ y
+$(f\circ g)(x) = \sqrt{x^2-6}$.
+
+\item \textbf{(Biyección por tramos)} Sea
+$$f(x) = \begin{cases} x^2+1 & \text{si } x\ge0 \\ 2x+1 & \text{si } x<0. \end{cases}$$
+Demuestre que $f$ es biyección de $\mathbb{R}$ sobre $\mathbb{R}$ y encuentre $f^{-1}$.
+
+\textit{Solución:} Para $x\ge0$, $f(x)=x^2+1$ es estrictamente creciente y recorre $[1,\infty[$.
+Para $x<0$, $f(x)=2x+1$ es estrictamente creciente y recorre $\,]-\infty,1[$. Como los recorridos
+de ambos tramos no se traslapan (uno es $\ge1$ y el otro $<1$) y cada tramo es inyectivo por
+separado, $f$ es inyectiva en $\mathbb{R}$. Además $\mathsf{Rec}\,f =
+[1,\infty[\,\cup\,]-\infty,1[ = \mathbb{R}$, así que $f$ es sobre. Luego $f$ es biyección de
+$\mathbb{R}$ sobre $\mathbb{R}$, con
+$$f^{-1}(y) = \begin{cases} \sqrt{y-1} & \text{si } y\ge1 \\ \dfrac{y-1}{2} & \text{si } y<1.
+\end{cases}$$
+
+\item \textbf{(Propiedad de la inversa, demostración)} Sea $f:A\to B$ biyección. Demuestre
+rigurosamente, a partir de la definición de $f^{-1}$ (sin asumir de antemano que
+$f^{-1}\circ f=\mathsf{Id}_A$), que para todo $x\in A$ se tiene $f^{-1}(f(x)) = x$.
+
+\textit{Solución:} Sea $x\in A$ y sea $y=f(x)\in B$. Por definición de la relación inversa,
+$f^{-1} = \{(y,x)\in B\times A : f(x)=y\}$. Como $f(x)=y$, se tiene $(y,x)\in f^{-1}$, es decir
+$f^{-1}(y)=x$ (aquí usamos que $f^{-1}$ es función, pues $f$ es inyectiva). Sustituyendo $y=f(x)$,
+obtenemos $f^{-1}(f(x)) = x$, como se quería demostrar.
+
+\end{enumerate}
+
+\end{document}

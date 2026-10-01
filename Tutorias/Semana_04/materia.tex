@@ -1,0 +1,193 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}
+\theoremstyle{definition}
+\newtheorem{definicion}{Definición}
+\newtheorem{ejemplo}{Ejemplo}
+
+\title{Semana 4 -- Materia}
+\author{Tutorías -- Introducción al Cálculo}
+\date{24/08--28/08/2026}
+
+\begin{document}
+\maketitle
+
+\section{Intervalos (sección 2.4 del libro)}
+
+La sección 2.4, ``Conjuntos de Números Reales'', define formalmente los subconjuntos de
+$\mathbb{R}$ más usados a partir de los axiomas de existencia de conjuntos (Axiomas 2.17 y 2.18).
+Entre ellos están los \textbf{intervalos}, que son los conjuntos que usaremos constantemente al
+escribir conjuntos solución de inecuaciones.
+
+\subsection{Definiciones}
+
+Dados $a,b \in \mathbb{R}$ con $a<b$:
+\begin{itemize}[nosep]
+  \item Intervalo cerrado: $[a,b] = \{x\in\mathbb{R} : a\le x \le b\}$.
+  \item Intervalo abierto: $\,]a,b[\, = \{x\in\mathbb{R} : a<x<b\}$.
+  \item Cerrado en $a$, abierto en $b$: $[a,b[\, = \{x\in\mathbb{R} : a\le x<b\}$.
+  \item Abierto en $a$, cerrado en $b$: $\,]a,b] = \{x\in\mathbb{R} : a<x\le b\}$.
+  \item Infinito por la izquierda, abierto en $b$: $\,]-\infty,b[\, = \{x\in\mathbb{R} : x<b\}$.
+  \item Infinito por la izquierda, cerrado en $b$: $\,]-\infty,b] = \{x\in\mathbb{R} : x\le b\}$.
+  \item Infinito por la derecha, abierto en $a$: $\,]a,\infty[\, = \{x\in\mathbb{R} : a<x\}$.
+  \item Infinito por la derecha, cerrado en $a$: $[a,\infty[\, = \{x\in\mathbb{R} : a\le x\}$.
+\end{itemize}
+Además $\,]-\infty,\infty[\,$ se usa para denotar a $\mathbb{R}$ completo. Note que el libro usa la
+notación ``a la francesa'' con corchetes invertidos ($]a,b[$) para los intervalos abiertos, en vez de
+paréntesis; mantenemos esa notación por consistencia con el texto.
+
+Sobre conjuntos en general (no solo intervalos) se pueden aplicar las operaciones usuales: unión
+$A\cup B$, intersección $A\cap B$, diferencia $A-B$ y la relación de subconjunto $A\subseteq B$
+(Definiciones 2.22--2.25), todas definidas igual que en teoría de conjuntos elemental.
+
+\begin{ejemplo}
+$[-2,1] \cap \,]0,15] = \,]0,1]$.
+\end{ejemplo}
+
+\begin{ejemplo}
+$\big([1,3[\, \cup \,]4,6]\big) \cap \,]2,5[\, = \,]2,3[\, \cup \,]4,5[$.
+\end{ejemplo}
+
+\begin{ejemplo}
+Escriba $\mathbb{R} - \{2\}$ como unión de intervalos.
+
+\emph{Solución.} $\mathbb{R}-\{2\} = \,]-\infty,2[\, \cup \,]2,\infty[$.
+\end{ejemplo}
+
+\section{Inecuaciones lineales y cuadráticas (sección 2.6)}
+
+\subsection{Ecuaciones de referencia}
+
+Antes de ver inecuaciones conviene recordar (Teorema 2.5) cómo se resuelven las ecuaciones
+asociadas. La \textbf{ecuación de primer grado} $ax+b=0$ (con $a\neq 0$) tiene siempre una única
+solución $x=-b/a$. La \textbf{ecuación de segundo grado} $ax^2+bx+c=0$ (con $a\neq 0$), llamando
+$\Delta = b^2-4ac$:
+\begin{itemize}[nosep]
+  \item Si $\Delta \ge 0$, las soluciones son $x_1 = \dfrac{-b+\sqrt{\Delta}}{2a}$ y
+  $x_2 = \dfrac{-b-\sqrt{\Delta}}{2a}$, y se tiene la factorización $ax^2+bx+c = a(x-x_1)(x-x_2)$.
+  \item Si $\Delta < 0$, la ecuación no tiene soluciones reales.
+\end{itemize}
+
+\subsection{Inecuación de primer grado (2.6.5)}
+
+Una inecuación $ax+b>0$ (con $a\neq 0$; análogamente con $\ge$, $<$, $\le$) se resuelve despejando
+$x$ directamente: como $a\neq 0$,
+\[
+  ax+b>0 \;\leftrightarrow\; x>-\frac{b}{a} \quad (\text{si } a>0).
+\]
+\textbf{Cuidado:} si $a<0$, al dividir por $a$ la desigualdad se invierte (Teorema 2.3 (XI)). El
+conjunto solución de $ax+b>0$ es $\,]-b/a,\infty[$ cuando $a>0$. Reemplazando $>$ por $\ge$, $<$ o
+$\le$ se obtienen, análogamente, $[-b/a,\infty[$, $\,]-\infty,-b/a[$ y $\,]-\infty,-b/a]$
+(para $a>0$; si $a<0$ los intervalos se invierten).
+
+\begin{ejemplo}
+Resolver $3x-6>0$.
+
+\emph{Solución.} $3x>6 \leftrightarrow x>2$. Conjunto solución: $\,]2,\infty[$.
+\end{ejemplo}
+
+\begin{ejemplo}
+Resolver $-2x+4 \ge 0$.
+
+\emph{Solución.} $-2x \ge -4$. Como el coeficiente de $x$ es negativo, al despejar se invierte la
+desigualdad: $x \le 2$. Conjunto solución: $\,]-\infty,2]$.
+\end{ejemplo}
+
+\subsection{Inecuación de segundo grado (2.6.6)}
+
+Para $ax^2+bx+c>0$ (con $a\neq 0$), el signo de la expresión depende del discriminante
+$\Delta=b^2-4ac$. El teorema correspondiente (sección 2.6.6) dice:
+
+\begin{teorema}[Signo de la cuadrática]
+Sean $a,b,c\in\mathbb{R}$, $\Delta=b^2-4ac$, $a\neq 0$.
+\begin{enumerate}[label=(\Roman*)]
+  \item Si $\Delta \ge 0$, sean $x_1\le x_2$ las soluciones de $ax^2+bx+c=0$:
+  \begin{enumerate}[label=(\alph*)]
+    \item Si $a>0$: $ax^2+bx+c>0 \leftrightarrow (x>x_2 \lor x<x_1)$.
+    \item Si $a<0$: $ax^2+bx+c>0 \leftrightarrow x_1<x<x_2$.
+  \end{enumerate}
+  \item Si $\Delta<0$:
+  \begin{enumerate}[label=(\alph*)]
+    \item Si $a>0$: $\forall x\in\mathbb{R}\ (ax^2+bx+c>0)$.
+    \item Si $a<0$: $\forall x\in\mathbb{R}\ (ax^2+bx+c<0)$.
+  \end{enumerate}
+\end{enumerate}
+\end{teorema}
+
+La demostración (caso $\Delta\ge0$, $a>0$) parte de la factorización $ax^2+bx+c=a(x-x_1)(x-x_2)$ y
+usa que un producto de dos factores es positivo si y solo si ambos factores tienen el mismo signo:
+\[
+  a(x-x_1)(x-x_2)>0 \;\leftrightarrow\; \big((x-x_1)>0 \land (x-x_2)>0\big) \lor \big((x-x_1)<0 \land (x-x_2)<0\big)
+  \;\leftrightarrow\; x>x_2 \lor x<x_1.
+\]
+Este mismo razonamiento ``signo del producto de factores'' es la técnica general que usamos para
+armar \textbf{tablas de signos}: se factoriza la expresión, se ubican las raíces de cada factor en la
+recta real, y se analiza el signo de cada factor (y por lo tanto el signo del producto) en cada
+intervalo determinado por esas raíces.
+
+\begin{ejemplo}
+Resolver $x^2-x-6>0$.
+
+\emph{Solución.} $\Delta = (-1)^2-4(1)(-6)=25>0$, $x_1=-2$, $x_2=3$ (raíces de $x^2-x-6=0$), y
+$a=1>0$. Factorizando: $x^2-x-6=(x-3)(x+2)$. Tabla de signos:
+\[
+\begin{array}{c|ccccc}
+  & x<-2 & x=-2 & -2<x<3 & x=3 & x>3 \\\hline
+  (x+2) & - & 0 & + & + & + \\
+  (x-3) & - & - & - & 0 & + \\\hline
+  (x+2)(x-3) & + & 0 & - & 0 & +
+\end{array}
+\]
+Como buscamos $(x+2)(x-3)>0$, el conjunto solución es $\,]-\infty,-2[\, \cup \,]3,\infty[$, lo que
+coincide con el caso (I)(a) del teorema ($a>0$: solución fuera de las raíces).
+\end{ejemplo}
+
+\begin{ejemplo}
+Resolver $-x^2+2x+3 \ge 0$.
+
+\emph{Solución.} Aquí $a=-1<0$. $\Delta=4+12=16>0$, raíces $x_1=-1$, $x_2=3$. Por el caso (I)(b)
+del teorema (con $\ge$ en vez de $>$, incluyendo los extremos): el conjunto solución es $[-1,3]$.
+\end{ejemplo}
+
+\begin{ejemplo}
+Resolver $x^2+x+1>0$.
+
+\emph{Solución.} $\Delta = 1-4=-3<0$ y $a=1>0$. Por el caso (II)(a) del teorema, la desigualdad se
+cumple para todo $x\in\mathbb{R}$. Conjunto solución: $\mathbb{R}$.
+\end{ejemplo}
+
+\section{Inecuaciones racionales y por factores (Problema 2.3)}
+
+El libro no dedica todavía una sección separada a ``inecuaciones racionales''; el primer ejemplo de
+este tipo aparece como un problema resuelto (Problema 2.3) que combina un factor cuadrático con
+raíces reales y otro factor cuadrático \emph{sin} raíces reales (es decir, de signo constante). La
+idea clave es: si uno de los factores de un producto nunca cambia de signo, se puede ``eliminar''
+ese factor sin cambiar el sentido de la desigualdad (dividiendo por él, ya que es siempre positivo o
+siempre negativo).
+
+\begin{ejemplo}[Problema 2.3 del libro]
+Resolver $(x^2+3x-4)(2x^2+4)>0$.
+
+\emph{Solución.} La ecuación $2x^2+4=0$ no tiene soluciones reales (su discriminante es
+$0^2-4\cdot2\cdot4=-32<0$) y el coeficiente principal es $2>0$, luego por el Teorema de la sección
+2.6.6, $2x^2+4>0$ para todo $x\in\mathbb{R}$. Como este factor siempre es positivo, multiplicar o
+dividir por él no cambia el sentido de la desigualdad:
+\[
+  (x^2+3x-4)(2x^2+4)>0 \;\leftrightarrow\; x^2+3x-4>0 \;\leftrightarrow\; (x+4)(x-1)>0
+  \;\leftrightarrow\; (x>1 \lor x<-4).
+\]
+Conjunto solución: $\,]-\infty,-4[\, \cup \,]1,\infty[$.
+\end{ejemplo}
+
+Esta misma idea (tabla de signos con todos los factores, incluyendo los que van en el denominador)
+es la que se usará la próxima semana para inecuaciones racionales más generales, donde además hay
+que excluir del conjunto solución los valores que anulan el denominador.
+
+\end{document}

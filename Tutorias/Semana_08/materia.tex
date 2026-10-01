@@ -1,0 +1,224 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\newtheorem*{definicion}{Definición}
+\newtheorem*{ejemplo}{Ejemplo}
+\newtheorem*{teorema}{Teorema}
+\newtheorem*{observacion}{Observación}
+
+\title{Semana 8 -- Materia}
+\author{Tutorías -- Introducción al Cálculo}
+\date{28/9--2/10/2026}
+
+\begin{document}
+\maketitle
+
+\section{Funciones inyectivas}
+
+Hasta ahora sabemos que una función asigna a cada elemento de su dominio una
+única imagen. Nos interesa ahora el caso en que, además, elementos distintos
+del dominio tienen imágenes distintas: esto es lo que permite, más adelante,
+``deshacer'' la función y definir una inversa.
+
+\begin{definicion}[Función inyectiva]
+Sea $f$ función. $f$ es inyectiva o uno a uno si y solo si
+\[
+\forall x \in \mathsf{Dom}\,f\ \forall y \in \mathsf{Dom}\,f\ (x \neq y \to f(x) \neq f(y)).
+\]
+\end{definicion}
+
+Esta definición es equivalente a su forma contrarrecíproca, que en la práctica
+es la que más se usa para demostrar inyectividad:
+\[
+\forall x \in \mathsf{Dom}\,f\ \forall y \in \mathsf{Dom}\,f\ (f(x) = f(y) \to x = y).
+\]
+
+Gráficamente, $f$ es inyectiva cuando toda recta horizontal intersecta su
+gráfico en a lo más un punto.
+
+\begin{ejemplo}
+Sea $f(x) = \dfrac{x+1}{x-2}$, con $\mathsf{Dom}\,f = \mathbb{R}-\{2\}$.
+Sean $x,y \in \mathbb{R}-\{2\}$ con $f(x)=f(y)$. Entonces
+\[
+\frac{x+1}{x-2} = \frac{y+1}{y-2} \iff (x+1)(y-2) = (y+1)(x-2) \iff xy-2x+y-2 = xy-2y+x-2,
+\]
+de donde $3y = 3x$, es decir $x=y$. Por lo tanto $f$ es inyectiva.
+\end{ejemplo}
+
+\begin{ejemplo}
+Sea $f(x) = 2x+1$. Si $f(x) = f(y)$ entonces $2x+1 = 2y+1$, de donde $x=y$.
+Luego $f$ es inyectiva. En cambio, $g(x) = x^2$ no es inyectiva, pues
+$g(1) = g(-1) = 1$ con $1 \neq -1$.
+\end{ejemplo}
+
+\section{Relación inversa}
+
+Toda función, sea o no inyectiva, tiene asociada una relación inversa (que no
+siempre es función).
+
+\begin{definicion}[Relación inversa]
+Sea $f$ función real. La relación inversa $f^{-1}$ de $f$ se define por
+\[
+f^{-1} = \{(y,x) \in \mathsf{Rec}\,f \times \mathsf{Dom}\,f : f(x) = y\}.
+\]
+\end{definicion}
+
+Intuitivamente, si elementos distintos del dominio tienen imágenes distintas
+(es decir, si $f$ es inyectiva), entonces cada elemento del recorrido tiene
+una única preimagen, y por lo tanto $f^{-1}$ resulta ser función. Este es el
+contenido del siguiente teorema.
+
+\begin{teorema}
+Sea $f$ función. Entonces $f$ es inyectiva si y solo si $f^{-1}$ es función.
+\end{teorema}
+
+\emph{Idea de la demostración.} Si $f$ es inyectiva y $(y,x), (y,x') \in f^{-1}$,
+entonces $f(x) = y = f(x')$, y como $f$ es inyectiva, $x=x'$; luego $f^{-1}$ es
+función. Recíprocamente, si $f^{-1}$ es función y $f(x) = f(x') = y$, entonces
+$(y,x), (y,x') \in f^{-1}$, y como $f^{-1}$ es función, $x=x'$; luego $f$ es
+inyectiva.
+
+\begin{observacion}
+Cuando $f^{-1}$ es función, se cumple
+\[
+\mathsf{Dom}\,f^{-1} = \mathsf{Rec}\,f, \qquad \mathsf{Rec}\,f^{-1} = \mathsf{Dom}\,f,
+\]
+y además, si $x \in \mathsf{Dom}\,f$ e $y \in \mathsf{Rec}\,f$, entonces
+\[
+f(x) = y \leftrightarrow f^{-1}(y) = x.
+\]
+\end{observacion}
+
+\begin{ejemplo}
+Retomando $f(x) = \dfrac{x+1}{x-2}$, ya sabemos que $f$ es inyectiva, con
+$\mathsf{Dom}\,f = \mathbb{R}-\{2\}$ y $\mathsf{Rec}\,f = \mathbb{R}-\{1\}$.
+Para $y \in \mathbb{R}-\{1\}$, buscamos $x$ tal que $f(x) = y$:
+\[
+\frac{x+1}{x-2} = y \iff x+1 = y(x-2) \iff x(1-y) = -1-2y \iff x = \frac{2y+1}{y-1}.
+\]
+Luego $f^{-1}$ es la función real con dominio $\mathbb{R}-\{1\}$, recorrido
+$\mathbb{R}-\{2\}$ y definida por $f^{-1}(y) = \dfrac{2y+1}{y-1}$.
+\end{ejemplo}
+
+\section{Biyecciones}
+
+Decimos que una función de $A$ en $B$ es \emph{sobre} $B$ cuando su recorrido
+es exactamente $B$. Combinando esto con la inyectividad obtenemos el concepto
+de biyección.
+
+\begin{definicion}[Biyección de $A$ sobre $B$]
+Sean $A,B$ conjuntos. $f$ es biyección de $A$ sobre $B$ si y solo si $f$ es
+función inyectiva de $A$ en $B$ y $\mathsf{Rec}\,f = B$.
+\end{definicion}
+
+\begin{ejemplo}
+Sea $f:\mathbb{R}\to\mathbb{R}$ definida por $f(x) = 2x$.
+\begin{itemize}
+\item $f$ es uno a uno: si $f(x)=f(y)$ entonces $2x=2y$, luego $x=y$.
+\item $f$ es sobre $\mathbb{R}$: dado $y \in \mathbb{R}$, sea $x = y/2 \in \mathbb{R}$;
+entonces $f(x) = 2(y/2) = y$, luego $y \in \mathsf{Rec}\,f$.
+\end{itemize}
+Por lo tanto, $f$ es biyección de $\mathbb{R}$ sobre $\mathbb{R}$.
+\end{ejemplo}
+
+\begin{ejemplo}
+Sea $f:\mathbb{N}\to\mathbb{N}$ definida por $f(x) = 3x$.
+\begin{itemize}
+\item $f$ es uno a uno: si $f(x)=f(y)$ entonces $3x=3y$, luego $x=y$.
+\item $f$ no es sobre $\mathbb{N}$: $2 \notin \mathsf{Rec}\,f$, pues si $2=f(x)$ para algún
+$x\in\mathbb{N}$, entonces $x = 2/3 \notin \mathbb{N}$.
+\end{itemize}
+Por lo tanto, $f$ no es biyección de $\mathbb{N}$ sobre $\mathbb{N}$.
+\end{ejemplo}
+
+\section{Propiedades de las biyecciones}
+
+\begin{teorema}
+Si $f$ es función inyectiva, entonces $f^{-1}$ también es función inyectiva.
+\end{teorema}
+
+\emph{Idea de la demostración.} Como $f$ es inyectiva, $f^{-1}$ es función
+(por el teorema anterior). Además,
+\[
+f^{-1}(x) = f^{-1}(y) \implies f(f^{-1}(x)) = f(f^{-1}(y)) \implies x=y,
+\]
+así que $f^{-1}$ también es inyectiva.
+
+\begin{teorema}
+Si $f$ es biyección de $A$ sobre $B$, entonces $f^{-1}$ es biyección de $B$
+sobre $A$.
+\end{teorema}
+
+\emph{Idea de la demostración.} Por el teorema anterior, $f^{-1}$ es función
+inyectiva, y $\mathsf{Dom}\,f^{-1} = \mathsf{Rec}\,f = B$. Falta ver que
+$f^{-1}$ es sobre $A$: dado $y \in A$, como $f$ es sobre $B$, existe $x \in B$
+con $f^{-1}(x) = y$ (usando que $f(y)=x$), de donde $y \in \mathsf{Rec}\,f^{-1}$.
+
+\begin{teorema}
+Si $f$ es biyección de $A$ sobre $B$ y $g$ es biyección de $B$ sobre $C$,
+entonces $g\circ f$ es biyección de $A$ sobre $C$.
+\end{teorema}
+
+\emph{Idea de la demostración.} Se verifica que $\mathsf{Dom}(g\circ f) = A$ y
+que $\mathsf{Rec}(g\circ f) = C$ (usando que $f$ y $g$ son sobre). Para la
+inyectividad, si $g\circ f(x) = g\circ f(x')$, entonces $g(f(x)) = g(f(x'))$;
+como $g$ es uno a uno, $f(x)=f(x')$, y como $f$ es uno a uno, $x=x'$.
+
+\section{Aplicación: funciones por tramos}
+
+Cuando una función está definida por tramos, probar inyectividad y
+sobreyectividad requiere analizar cada tramo y también las combinaciones entre
+tramos distintos, como muestra el siguiente problema.
+
+\begin{ejemplo}[Problema 3.1 del libro]
+Sean $f,g$ funciones reales definidas por
+\[
+f(x) = \begin{cases} x^2-1 & \text{si } x>0 \\ 2x-1 & \text{si } x \le 0 \end{cases}
+\qquad
+g(x) = \begin{cases} x^2-1 & \text{si } x>-1 \\ 2x-1 & \text{si } x \le -1. \end{cases}
+\]
+Se pide mostrar que $f$ es biyección sobre $\mathbb{R}$, que $g$ no lo es, y
+determinar $g \circ f^{-1}$.
+
+\emph{Inyectividad de $f$.} Como $f$ está definida por tramos, hay que
+considerar tres casos para $x \neq y$:
+\begin{itemize}
+\item $x,y>0$: $x^2 \neq y^2$, luego $f(x) = x^2-1 \neq y^2-1 = f(y)$.
+\item $x,y\le 0$: $2x \neq 2y$, luego $f(x) = 2x-1 \neq 2y-1 = f(y)$.
+\item $x\le 0 < y$: $f(x) = 2x-1 \le -1$ y $f(y) = y^2-1 > -1$, luego $f(x)\neq f(y)$.
+\end{itemize}
+En los tres casos $f(x)\neq f(y)$, así que $f$ es inyectiva.
+
+\emph{Sobreyectividad de $f$.} Dado $y\in\mathbb{R}$, distinguimos $y\le -1$ e
+$y>-1$:
+\begin{itemize}
+\item Si $y \le -1$, sea $x = \frac{y+1}{2} \le 0$; entonces $f(x) = 2\left(\frac{y+1}{2}\right)-1 = y$.
+\item Si $y > -1$, sea $x = \sqrt{y+1} > 0$; entonces $f(x) = (\sqrt{y+1})^2-1 = y$.
+\end{itemize}
+Luego $f$ es sobre $\mathbb{R}$, y por lo tanto $f$ es biyección de $\mathbb{R}$
+sobre $\mathbb{R}$.
+
+\emph{$g$ no es biyección.} $g$ no es inyectiva: con $x_1=-\frac12$, $x_2=\frac12$
+(ambos en el tramo $x>-1$), $g(x_1) = \frac14-1 = -\frac34 = g(x_2)$ pese a que
+$x_1\neq x_2$. Tampoco es sobre $\mathbb{R}$ (por ejemplo, no existe $x$ con
+$g(x)=-2$).
+
+\emph{Cálculo de $f^{-1}$.} Aprovechando el trabajo de la sobreyectividad,
+\[
+f^{-1}(y) = \begin{cases} \dfrac{y+1}{2} & \text{si } y \le -1 \\[4pt] \sqrt{y+1} & \text{si } y > -1. \end{cases}
+\]
+
+\emph{Cálculo de $g\circ f^{-1}$.} Distinguiendo según el valor de $x$ (y
+usando que $f^{-1}(x) > -1 \leftrightarrow x > -3$ cuando $x \le -1$), se
+obtiene:
+\[
+g\circ f^{-1}(x) = \begin{cases} x & \text{si } x \le -3 \lor x > -1 \\[4pt] \left(\dfrac{x+1}{2}\right)^2-1 & \text{si } -3 < x \le -1. \end{cases}
+\]
+\end{ejemplo}
+
+\end{document}

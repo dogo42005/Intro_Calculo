@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\title{Semana 1 -- Ejercicios}
+\author{Tutorías -- Introducción al Cálculo}
+\date{03/08--07/08/2026}
+
+\begin{document}
+\maketitle
+
+\section{Ejercicios de la semana}
+
+\begin{enumerate}[label=\arabic*.]
+
+\item Determine el grado de los siguientes polinomios, si es que tienen:
+\begin{enumerate}[label=(\alph*)]
+\item $P(x) = 5x^3 - 2x + 7$
+\item $P(x) = 0 \cdot x^4 + 0 \cdot x + 0$
+\item $P(x) = -8$
+\end{enumerate}
+(Respuestas: 3; sin grado; 0.)
+
+\item Sean $P(x) = 2x^3 - x^2 + 4$ y $Q(x) = x^2 - 3x + 1$. Calcule $P(x)+Q(x)$,
+$P(x)-Q(x)$ y $P(x)\cdot Q(x)$.
+
+\item Verifique, usando la definición de raíz, si $\alpha = 3$ es raíz de
+$P(x) = x^3 - 4x^2 + x + 6$. (Respuesta: no lo es.)
+
+\item Use el Teorema del Resto para calcular el resto de dividir
+$P(x) = 2x^4 - 3x^3 + x - 1$ por $(x-1)$, sin desarrollar la división
+completa. (Respuesta: $R=-1$.)
+
+\item Use el esquema de coeficientes indeterminados para dividir
+$P(x) = x^3 + 2x^2 - 5x - 6$ por $(x+3)$. Indique el cuociente y el resto, y
+concluya si $-3$ es o no raíz de $P$. (Respuesta: $Q(x)=x^2-x-2$, $R=0$;
+$-3$ sí es raíz.)
+
+\item Divida $P(x) = 4x^3 - x^2 + 2x - 5$ por $(x-\tfrac12)$ usando el
+esquema de coeficientes indeterminados.
+
+\item Aplique el algoritmo general de división (Teorema 7.6) para dividir
+$P(x) = x^4 + x^3 - 3x^2 + x - 2$ por $S(x) = x^2 + 2x - 1$. Encuentre $Q$ y
+$R$, y verifique que $Q(x)S(x)+R(x) = P(x)$.
+
+\item Divida $P(x) = 2x^5 - 3x^2 + 1$ por $S(x) = x^3 - x + 1$.
+
+\item ¿Es posible que al dividir un polinomio $P$ de grado $4$ por un
+polinomio $S$ de grado $5$, el cuociente $Q$ no sea el polinomio $0$?
+Justifique usando el Teorema 7.6. (Respuesta: no.)
+
+\item Sin hacer la división completa, determine si $(x+2)$ divide a
+$P(x) = x^5 + 3x^4 - x^2 + 4x + 12$. (Respuesta: sí, ya que $P(-2)=0$.)
+
+\item \textbf{(Nivel interrogación)} Sea $P(x)$ un polinomio de grado $n\ge1$ y $S(x)$ un
+polinomio de grado $1$. Usando el Teorema 7.6 (algoritmo general de división), demuestre
+rigurosamente que el resto $R(x)$ de dividir $P(x)$ por $S(x)$ es necesariamente un polinomio
+\emph{constante} (es decir, de grado $0$).
+
+\item \textbf{(Nivel interrogación)} Sea $P(x) = x^4 - 2x^3 + kx^2 - 3x + 5$, con $k\in\mathbb{R}$.
+Sabiendo que el resto de dividir $P(x)$ por $(x+1)$ es $12$, determine el valor de $k$ (use el
+Teorema del Resto, sin hacer la división completa).
+
+\item \textbf{(Nivel interrogación)} Sea $P(x)$ un polinomio de grado $n$ y $S(x)$ un polinomio de
+grado $m$ con $m>n$. Demuestre, a partir del Teorema 7.6, que el cuociente de dividir $P(x)$ por
+$S(x)$ es el polinomio $0$ y que el resto es el propio $P(x)$.
+
+\end{enumerate}
+
+\end{document}

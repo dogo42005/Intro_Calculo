@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\title{Semana 5 -- Materia}
+\author{Tutorías -- Introducción al Cálculo}
+\date{31/08--04/09/2026}
+\begin{document}
+\maketitle
+
+\section*{Introducción}
+
+Esta semana cerramos el bloque de inecuaciones de la Sección 2.6 estudiando dos tipos que combinan
+todo lo visto hasta ahora (axiomas de orden, valor absoluto, intervalos e inecuaciones racionales):
+inecuaciones que involucran \textbf{valor absoluto} e inecuaciones que involucran \textbf{raíces}.
+En ambos casos la idea central es la misma: transformar la inecuación original en una equivalente
+libre de valor absoluto o de raíces, \emph{sin perder ni agregar soluciones}, prestando especial
+atención a los signos de las expresiones involucradas y al dominio en el que la inecuación tiene
+sentido.
+
+\section{Inecuaciones con valor absoluto}
+
+Recordemos la Definición 2.7:
+\[
+|x| = \begin{cases} x & \text{si } x \ge 0, \\ -x & \text{si } x < 0. \end{cases}
+\]
+
+De esta definición se deduce un par de equivalencias muy útiles para resolver inecuaciones. Para
+$a > 0$:
+\[
+|x| < a \quad \leftrightarrow \quad -a < x < a,
+\]
+\[
+|x| > a \quad \leftrightarrow \quad (x > a \ \lor\ x < -a).
+\]
+
+También es fundamental notar que si $A$ y $B$ son dos expresiones cualesquiera, entonces $|A|$ y
+$|B|$ son siempre \textbf{no negativas}. Esto permite, cuando ambos miembros de una inecuación son
+no negativos, elevar al cuadrado sin alterar el conjunto solución: en efecto, si $u \ge 0$ y
+$v \ge 0$, entonces $u \le v \leftrightarrow u^2 \le v^2$ (esto se sigue de las propiedades del
+orden de la Sección 2.3). En particular, $|A| \le |B| \leftrightarrow A^2 \le B^2$, pues
+$|A|^2 = A^2$ y $|B|^2 = B^2$.
+
+\subsection*{Ejemplo 1 (inspirado en el Problema 2.6 del libro)}
+
+Resolver la inecuación
+\[
+\frac{|2x-1|}{|x+4|} \le 2.
+\]
+
+\textbf{Solución.} La expresión está definida para $x \neq -4$. Como el lado izquierdo es un
+cociente de valores absolutos, es no negativo; el lado derecho también lo es. Luego podemos elevar
+al cuadrado y obtener una inecuación equivalente:
+\[
+\frac{(2x-1)^2}{(x+4)^2} \le 4 \quad \leftrightarrow \quad (2x-1)^2 \le 4(x+4)^2,
+\]
+donde la segunda equivalencia usa que $(x+4)^2 > 0$ pues $x \neq -4$. Desarrollando:
+\[
+4x^2 - 4x + 1 \le 4(x^2 + 8x + 16) = 4x^2 + 32x + 64
+\]
+\[
+\leftrightarrow \quad -4x + 1 \le 32x + 64 \quad \leftrightarrow \quad -36x \le 63 \quad
+\leftrightarrow \quad x \ge -\frac{7}{4}.
+\]
+Como $-4 \notin \left[-\dfrac{7}{4}, \infty\right[$, la restricción de dominio no elimina ninguna
+solución. El conjunto solución es
+\[
+\left[-\frac{7}{4}, \infty\right[.
+\]
+
+\subsection*{Ejemplo 2 (usando la equivalencia $|A|<B \leftrightarrow -B<A<B$)}
+
+Resolver la inecuación
+\[
+|x+1| < 2x - 1.
+\]
+
+\textbf{Solución.} Para que exista alguna posibilidad de solución, el lado derecho debe ser
+positivo (pues el lado izquierdo es siempre $\ge 0$), es decir, necesitamos $2x - 1 > 0$. Bajo esa
+condición, la definición de valor absoluto nos da la equivalencia
+\[
+|x+1| < 2x-1 \quad \leftrightarrow \quad -(2x-1) < x+1 < 2x-1.
+\]
+Separamos en dos inecuaciones:
+\[
+-(2x-1) < x+1 \ \leftrightarrow\ -2x+1 < x+1 \ \leftrightarrow\ -3x < 0 \ \leftrightarrow\ x > 0,
+\]
+\[
+x+1 < 2x - 1 \ \leftrightarrow\ 2 < x \ \leftrightarrow\ x > 2.
+\]
+Intersectando con la condición $2x-1>0$ (es decir $x > 1/2$), y con $x>0$, $x>2$, obtenemos que la
+condición más restrictiva es $x>2$. El conjunto solución es
+\[
+]2,\infty[.
+\]
+
+\section{Inecuaciones con raíces}
+
+Al resolver inecuaciones que involucran raíces cuadradas hay que tener presentes dos cuidados
+adicionales respecto de las inecuaciones racionales ya vistas:
+
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Dominio:} una expresión $\sqrt{f(x)}$ sólo está definida cuando $f(x) \ge 0$.
+    Cualquier solución debe satisfacer esta condición.
+    \item \textbf{Signo al elevar al cuadrado:} como $\sqrt{f(x)} \ge 0$ siempre, al comparar
+    $\sqrt{f(x)}$ con una expresión $g(x)$ hay que fijarse en el signo de $g(x)$ antes de elevar al
+    cuadrado, exactamente como hicimos con el valor absoluto en la sección anterior.
+\end{enumerate}
+
+Concretamente, si queremos resolver $\sqrt{f(x)} \le g(x)$, necesitamos $f(x) \ge 0$ y $g(x) \ge 0$
+(si $g(x) < 0$ no hay solución posible, pues el lado izquierdo es no negativo), y bajo esas
+condiciones la inecuación es equivalente a $f(x) \le g(x)^2$.
+
+\subsection*{Ejemplo 1: una inecuación con raíz explícita}
+
+Resolver la inecuación
+\[
+\sqrt{2x+3} \le x.
+\]
+
+\textbf{Solución.} Para que la raíz esté definida necesitamos $2x+3 \ge 0$, es decir
+$x \ge -\dfrac{3}{2}$. Además, como el lado izquierdo es $\ge 0$, cualquier solución debe cumplir
+también $x \ge 0$. Bajo esta última condición (que ya implica la anterior), podemos elevar al
+cuadrado:
+\[
+2x + 3 \le x^2 \quad \leftrightarrow \quad x^2 - 2x - 3 \ge 0 \quad \leftrightarrow \quad
+(x-3)(x+1) \ge 0 \quad \leftrightarrow \quad (x \ge 3 \ \lor\ x \le -1).
+\]
+Intersectando con la condición $x \ge 0$, sólo sobrevive $x \ge 3$. El conjunto solución es
+\[
+[3, \infty[.
+\]
+
+\subsection*{Ejemplo 2 (inspirado en el Problema 2.4 del libro): tabla de signos con raíces}
+
+Resolver la inecuación
+\[
+\frac{(x^2-2)(x^2-7)}{(x-1)(x-6)} > 0.
+\]
+
+\textbf{Solución.} Notemos primero que esta es una inecuación racional cuyos factores cuadráticos
+tienen raíces irracionales: $x^2 - 2 = 0 \leftrightarrow x = \pm\sqrt{2}$ y
+$x^2 - 7 = 0 \leftrightarrow x = \pm\sqrt{7}$. Factorizando completamente,
+\[
+\frac{(x-\sqrt{2})(x+\sqrt{2})(x-\sqrt{7})(x+\sqrt{7})}{(x-1)(x-6)} > 0,
+\]
+con la restricción $x \neq 1$ y $x \neq 6$. El signo de esta expresión depende del signo de cada
+factor, así que ordenamos los seis puntos críticos de menor a mayor. Como
+$\sqrt{2} \approx 1.41$ y $\sqrt{7}\approx 2.65$, el orden es:
+\[
+-\sqrt{7} < -\sqrt{2} < 1 < \sqrt{2} < \sqrt{7} < 6.
+\]
+Llamemos $E(x)$ a la expresión completa. Estudiamos el signo de cada factor en cada intervalo:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+ & $\;]-\infty,-\sqrt{7}[\;$ & $-\sqrt{7}$ & $]-\sqrt{7},-\sqrt{2}[$ & $-\sqrt{2}$ & $]-\sqrt{2},1[$ & $1$ & $]1,\sqrt{2}[$ \\
+\hline
+$x-\sqrt{7}$   & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ \\
+$x+\sqrt{7}$   & $-$ & $0$ & $+$ & $+$ & $+$ & $+$ & $+$ \\
+$x-\sqrt{2}$   & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ \\
+$x+\sqrt{2}$   & $-$ & $-$ & $-$ & $0$ & $+$ & $+$ & $+$ \\
+$x-1$          & $-$ & $-$ & $-$ & $-$ & $-$ & $0$ & $+$ \\
+$x-6$          & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ & $-$ \\
+\hline
+$E(x)$         & $+$ & $0$ & $-$ & $0$ & $+$ & $*$ & $-$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+ & $\sqrt{2}$ & $]\sqrt{2},\sqrt{7}[$ & $\sqrt{7}$ & $]\sqrt{7},6[$ & $6$ & $]6,\infty[$ \\
+\hline
+$x-\sqrt{7}$   & $-$ & $-$ & $0$ & $+$ & $+$ & $+$ \\
+$x+\sqrt{7}$   & $+$ & $+$ & $+$ & $+$ & $+$ & $+$ \\
+$x-\sqrt{2}$   & $0$ & $+$ & $+$ & $+$ & $+$ & $+$ \\
+$x+\sqrt{2}$   & $+$ & $+$ & $+$ & $+$ & $+$ & $+$ \\
+$x-1$          & $+$ & $+$ & $+$ & $+$ & $+$ & $+$ \\
+$x-6$          & $-$ & $-$ & $-$ & $-$ & $0$ & $+$ \\
+\hline
+$E(x)$         & $0$ & $+$ & $0$ & $-$ & $*$ & $+$ \\
+\hline
+\end{tabular}
+\end{center}
+
+(el símbolo $*$ indica que $E(x)$ no está definida). Buscamos donde $E(x) > 0$, por lo que el
+conjunto solución es
+\[
+]-\infty,-\sqrt{7}[\ \cup\ ]-\sqrt{2},1[\ \cup\ ]\sqrt{2},\sqrt{7}[\ \cup\ ]6,\infty[.
+\]
+
+\end{document}

@@ -1,0 +1,114 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+
+\title{Semana 9 -- Ejercicios}
+\author{Tutorías -- Introducción al Cálculo}
+\date{5/10--9/10/2026}
+
+\begin{document}
+\maketitle
+
+\section{Ejercicios de la semana}
+
+\begin{enumerate}[label=\arabic*.]
+\item Sean $F(x) = x+3$ y $G(x) = x^2 - 1$. Calcule $G\circ F$ y $F \circ G$, indicando dominio en
+cada caso. (¿Son iguales?)
+
+\textit{Solución:} $G\circ F(x) = G(x+3) = (x+3)^2-1 = x^2+6x+8$, con $\mathsf{Dom}=\mathbb{R}$.
+$F\circ G(x) = F(x^2-1) = x^2-1+3 = x^2+2$, con $\mathsf{Dom}=\mathbb{R}$. No son iguales (por
+ejemplo, en $x=0$: $G\circ F(0)=8 \neq 2 = F\circ G(0)$).
+
+\item Sean $f(x) = \sqrt{x}$ y $g(x) = x-4$. Determine $\mathsf{Dom}\,(f\circ g)$ y
+$\mathsf{Dom}\,(g \circ f)$.
+
+\textit{Solución:} $f\circ g(x) = \sqrt{x-4}$ requiere $x-4\ge0$, luego $\mathsf{Dom}\,(f\circ g) =
+[4,\infty[$. $g\circ f(x) = \sqrt{x}-4$ requiere $x\ge0$, luego $\mathsf{Dom}\,(g\circ f) =
+[0,\infty[$.
+
+\item Demuestre que $f(x) = 3x - 5$ es inyectiva usando la definición.
+
+\textit{Solución:} Si $f(x)=f(y)$, entonces $3x-5=3y-5$, de donde $x=y$. Luego $f$ es inyectiva.
+
+\item Demuestre que $f(x) = x^2 + 2x$ (con dominio todo $\mathbb{R}$) \textbf{no} es inyectiva,
+exhibiendo dos puntos distintos con la misma imagen.
+
+\textit{Solución:} $f(0)=0$ y $f(-2)=4-4=0$, luego $f(0)=f(-2)$ con $0\neq-2$; $f$ no es inyectiva.
+
+\item Sea $f(x) = \dfrac{2x-1}{x+3}$. Demuestre que $f$ es inyectiva y encuentre $f^{-1}$.
+
+\textit{Solución:} Si $f(x)=f(y)$, entonces $(2x-1)(y+3)=(2y-1)(x+3)$, es decir
+$2xy+6x-y-3=2xy+6y-x-3$, de donde $7x=7y$, o sea $x=y$: $f$ es inyectiva. Despejando de
+$y=\dfrac{2x-1}{x+3}$ se obtiene $x=\dfrac{3y+1}{2-y}$, luego $f^{-1}(y)=\dfrac{3y+1}{2-y}$.
+
+\item Sea $f:\mathbb{R}\to\mathbb{R}$, $f(x) = 5x - 2$. Demuestre que $f$ es biyección de
+$\mathbb{R}$ sobre $\mathbb{R}$ y encuentre $f^{-1}$.
+
+\textit{Solución:} Inyectiva: $5x-2=5y-2\Rightarrow x=y$. Sobre: dado $y\in\mathbb{R}$, sea
+$x=\dfrac{y+2}{5}$; entonces $f(x)=5\left(\dfrac{y+2}{5}\right)-2=y+2-2=y$. Luego $f$ es biyección
+de $\mathbb{R}$ sobre $\mathbb{R}$ y $f^{-1}(y)=\dfrac{y+2}{5}$.
+
+\item Sea $f:\mathbb{N}\to\mathbb{N}$, $f(x) = x+1$. ¿Es $f$ biyección de $\mathbb{N}$ sobre
+$\mathbb{N}$? Justifique.
+
+\textit{Solución:} $f$ es inyectiva ($x+1=y+1\Rightarrow x=y$) pero no es sobre $\mathbb{N}$:
+$1\notin\mathsf{Rec}\,f$, pues $1=x+1$ exigiría $x=0\notin\mathbb{N}$. Por lo tanto $f$ no es
+biyección de $\mathbb{N}$ sobre $\mathbb{N}$.
+
+\item Si $f$ es biyección de $A$ sobre $B$, demuestre usando los teoremas de esta semana que
+$f^{-1}\circ f = \mathsf{Id}_A$ y $f \circ f^{-1} = \mathsf{Id}_B$.
+
+\textit{Solución:} Sea $x\in A$ y $y=f(x)\in B$. Por la Observación de la materia,
+$f(x)=y \iff f^{-1}(y)=x$; como $f(x)=y$, se tiene $f^{-1}(y)=x$, es decir
+$f^{-1}(f(x))=x=\mathsf{Id}_A(x)$. Análogamente, sea $y\in B$; como $f$ es sobre $B$, existe
+$x\in A$ con $f(x)=y$, y entonces $f(f^{-1}(y))=f(x)=y=\mathsf{Id}_B(y)$.
+
+\item Sean $f(x) = x^2$ (con dominio $[0,\infty[$) y $g(x) = x - 1$. Determine si
+$f\circ g$ es inyectiva en su dominio.
+
+\textit{Solución:} $f\circ g(x)=(x-1)^2$ está definida cuando $g(x)\in\mathsf{Dom}\,f=[0,\infty[$,
+es decir $x-1\ge0$, o sea $\mathsf{Dom}\,(f\circ g)=[1,\infty[$. En ese dominio, $x-1\ge0$, y como
+$t\mapsto t^2$ es inyectiva en $[0,\infty[$, se tiene que $f\circ g$ es inyectiva en
+$[1,\infty[$.
+
+\item Sea $f(x)=\begin{cases} x+1 & x \ge 0\\ -x+1 & x<0\end{cases}$. ¿Es $f$ inyectiva en todo
+$\mathbb{R}$?
+
+\textit{Solución:} No: $f(1)=2$ y $f(-1)=2$, con $1\neq-1$, así que $f$ no es inyectiva.
+
+\item \textbf{(Nivel interrogación)} Sean $f(x) = 3x-2$ y $g(x) = \dfrac{x+2}{3}$. Demuestre que
+$g = f^{-1}$ verificando directamente que $f\circ g = \mathsf{Id}$ y $g\circ f = \mathsf{Id}$, y
+luego use \textbf{solo} esa propiedad (sin calcular explícitamente una fórmula para
+$f\circ g\circ f$) para resolver la ecuación $f(g(f(x))) = 10$.
+
+\textit{Solución:} $f\circ g(x) = 3\left(\dfrac{x+2}{3}\right)-2 = (x+2)-2 = x$, y
+$g\circ f(x) = \dfrac{(3x-2)+2}{3} = x$. Como ambas composiciones dan la identidad, $g=f^{-1}$.
+Luego, en $f(g(f(x)))$, la parte interior $g(f(x)) = g\circ f(x) = x$ (por lo recién demostrado),
+así que $f(g(f(x))) = f(x)$. La ecuación se reduce entonces a $f(x)=10$, es decir $3x-2=10$, de
+donde $x=4$.
+
+\item \textbf{(Nivel interrogación)} Sean $f(x) = \sqrt{x+2}$ (con $\mathsf{Dom}\,f=[-2,\infty[$)
+y $g(x) = x^2-2$ (con $\mathsf{Dom}\,g=\mathbb{R}$). Determine $\mathsf{Dom}\,(f\circ g)$, calcule
+$(f\circ g)(x)$, y determine si $f\circ g$ es inyectiva en su dominio.
+
+\textit{Solución:} Se necesita $g(x)\in\mathsf{Dom}\,f$, es decir $x^2-2\ge-2$, o sea $x^2\ge0$,
+lo cual se cumple siempre; luego $\mathsf{Dom}\,(f\circ g)=\mathbb{R}$. Además
+$(f\circ g)(x) = \sqrt{(x^2-2)+2} = \sqrt{x^2} = |x|$. Esta función \textbf{no} es inyectiva en
+$\mathbb{R}$: por ejemplo $(f\circ g)(1) = 1 = (f\circ g)(-1)$, con $1\neq-1$.
+
+\item \textbf{(Nivel interrogación)} Sea $f:A\to B$ biyección con inversa $f^{-1}:B\to A$.
+Demuestre, usando \textbf{solo} la definición de relación inversa (Definición 3.10), que
+$(f^{-1})^{-1} = f$.
+
+\textit{Solución:} Por definición, $f^{-1} = \{(y,x)\in B\times A : f(x)=y\}$. Aplicando la misma
+definición a $f^{-1}$ (que es función, por ser $f$ inyectiva), su inversa es
+$(f^{-1})^{-1} = \{(x,y)\in A\times B : f^{-1}(y)=x\}$. Pero $f^{-1}(y)=x$ equivale exactamente a
+$f(x)=y$ (por la Observación de la Semana 9), es decir
+$(f^{-1})^{-1} = \{(x,y)\in A\times B : f(x)=y\} = f$.
+\end{enumerate}
+
+\end{document}
